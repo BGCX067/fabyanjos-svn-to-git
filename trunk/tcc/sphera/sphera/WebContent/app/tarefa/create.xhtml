@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:sphera="http://org.sphera/mytags">
+		
+<ui:composition>
+
+	<a4j:region renderRegionOnly="true" selfRendered="false">
+		<h:form id="tarefa" > 
+		<h:inputHidden value="#{tarefaController.tarefa.id}"/>
+			<h:panelGrid width="70%" columns="3" columnClasses="colunOne,colunTwo,colunThree" >
+				<h:outputLabel value="#{i18n.lblNome}" for="nome"/>
+				<h:inputText required="true" id="nome" value="#{tarefaController.tarefa.nome}" label="#{i18n.lblNome}"/>
+				<sphera:message validID="nome"/>
+				
+				<h:outputLabel for="elm1" value="#{i18n.lblDescr}"/>
+				<h:inputTextarea value="#{tarefaController.tarefa.descricao}" id="elm1" cols="50" rows="10" label="#{i18n.lblDescr}"/>
+				<sphera:message validID="elm1"/>
+				
+				<h:outputLabel value="#{i18n.lblIniPlanejado}" for="dtIni"/>
+				<rich:calendar value="#{tarefaController.tarefa.inicioPlanejado}" id="dtIni" datePattern="#{i18n.datePattern}" locale="#{i18n.locale}" mode="client" popup="true" required="true" showApplyButton="false" />
+				<sphera:message validID="dtIni"/>
+				
+				<h:outputLabel value="#{i18n.lblFimPlanejado}" for="dtFim"/>
+				<rich:calendar value="#{tarefaController.tarefa.fimPlanejado}" id="dtFim" datePattern="#{i18n.datePattern}" locale="#{i18n.locale}" mode="client" popup="true" required="true" showApplyButton="false" />
+				<sphera:message validID="dtFim"/>
+				
+				<h:outputLabel value="#{i18n.lblCustoPlanejadoRH}" for="custoRH"/>
+				<h:inputText label="#{i18n.lblCustoPlanejadoRH}" value="#{tarefaController.tarefa.custoPlanejadoRH}" id="custoRH" required="true">
+					
+				</h:inputText>
+				<sphera:message validID="custoRH"/>
+				
+				<h:outputLabel value="#{i18n.lblCustoPlanejadoMaterial}" for="custoMat"/>
+				<h:inputText label="#{i18n.lblCustoPlanejadoMaterial}" value="#{tarefaController.tarefa.custoPlanejadoMaterial}" id="custoMat">
+					
+				</h:inputText>
+				
+				<sphera:message validID="custoMat"/>
+				
+				<h:outputLabel for="fase" value="#{i18n.lblFase}"/>
+				<h:panelGroup layout="block">
+					<h:inputText id="fase" value="#{tarefaController.tarefa.fase}" label="#{i18n.lblFase}">
+						<f:converter converterId="faseConvert"/>
+					</h:inputText>
+					<rich:suggestionbox id="suggestResp"
+					 height="150" width="150" for="fase" border="1" shadowDepth="4" shadowOpacity="4"
+					 cellpadding="2" var="result" suggestionAction="#{faseController.autocomplete}"
+					 nothingLabel="#{i18n.noUsersFound}" fetchValue="#{result.nome} (#{result.projeto.nome})"
+					 >
+					<h:column>
+						<h:outputText value="#{result.nome}"/>
+					</h:column>	
+					<h:column>
+						<h:outputText value="#{result.projeto.nome}"/>
+					</h:column>
+					</rich:suggestionbox>
+				</h:panelGroup>
+				<sphera:message validID="fase"/>
+				
+			</h:panelGrid>
+			<h:outputText id="filelbl" value="#{i18n.lblTarefaFile}"/>
+			<rich:fileUpload fileUploadListener="#{tarefaController.listener}"
+			id="upload" acceptedTypes="#{configBean.acceptedFiles}"	stopControlLabel="#{i18n.uploadStopControlLabel}"
+			transferErrorLabel="#{i18n.uploadTransferErrorLabel}" clearControlLabel="#{i18n.uploadClearControlLabel}"
+			cancelEntryControlLabel="#{i18n.uploadCancelEntryControlLabel}" addControlLabel="#{i18n.uploadAddControlLabel}"
+			stopEntryControlLabel="#{i18n.uploadStopControlLabel}" sizeErrorLabel="#{i18n.ulploadSizeErrorLabel}"
+			progressLabel="#{i18n.uploadProgressLabel}" maxFilesQuantity="5" doneLabel="#{i18n.uploadDoneLabel}"
+			clearAllControlLabel="#{i18n.uploadClearAllControlLabel}">
+			
+			</rich:fileUpload>
+			<h:panelGrid columns="2">
+				<h:commandButton action="#{tarefaController.save}" value="#{i18n.save}"/>
+				<h:commandButton action="tarefas" immediate="true" value="#{i18n.cancel}"/>
+			</h:panelGrid>
+		</h:form>
+		</a4j:region>
+</ui:composition>
+</html>

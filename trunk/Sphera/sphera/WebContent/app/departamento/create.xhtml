@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:sphera="http://org.sphera/mytags">
+
+<ui:composition>
+		<a4j:region id="regCgo" selfRendered="false" renderRegionOnly="true">
+		<h:form id="dept">
+			
+			<h:inputHidden value="#{departamentoController.departamento.id}"/>
+			<h:panelGrid  width="70%" columns="3" columnClasses="colunOne,colunTwo,colunThree" id="fields">
+				<h:outputLabel for="name" value="#{i18n.deptName}" />
+				<h:inputText label="#{i18n.deptName}" id="name" required="true" value="#{departamentoController.departamento.nome}">
+					<f:validateLength maximum="20"/>
+				</h:inputText>
+				<sphera:message validID="name"/>
+			</h:panelGrid>
+			<h:panelGrid id="sub" columns="2">
+				<a4j:commandButton id="confirmOk" value="#{i18n.save}" action="#{departamentoController.save}">
+				</a4j:commandButton>
+				<h:commandButton value="#{i18n.cancel}" action="departamento" immediate="true"/>
+			</h:panelGrid>
+				
+		</h:form>
+</a4j:region>
+</ui:composition>
+
+</html>

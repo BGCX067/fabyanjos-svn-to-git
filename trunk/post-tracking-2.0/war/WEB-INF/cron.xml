@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+
+ <cron>
+    <url>/cron/consulta</url>
+    <description>Search for new updates for packs </description>
+    <schedule>every 8 hours</schedule>
+  </cron>
+
+</cronentries>

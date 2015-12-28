@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      template="/pages/template/common.xhtml">
+	<ui:define name="pageHeader">Cadastro de RM</ui:define>
+	<ui:define name="body">
+		<f:view>
+			<h:form>
+				<t:panelGrid align="center" columns="2">
+					<h:outputText value="Nome:" styleClass="titulo_campos"/> <h:inputText value="#{rmHandler.cadastroRM.nomeRM}" required="true"/>
+					<h:outputText value="CPF:" styleClass="titulo_campos"/> <h:inputText value="#{rmHandler.cadastroRM.CPF}" required="true"/>
+					<h:outputText value="RG:" styleClass="titulo_campos"/> <h:inputText value="#{rmHandler.cadastroRM.RG}" required="true"/>
+					<h:outputText value="Ramal:" styleClass="titulo_campos"/> <h:inputText value="#{rmHandler.cadastroRM.ramal}" required="true"/>
+					<h:outputText value="Telefone Res.:" styleClass="titulo_campos"/> <h:inputText value="#{rmHandler.cadastroRM.telefoneResidencial}"/>
+					<h:outputText value="Telefone Cel.:" styleClass="titulo_campos"/> <h:inputText value="#{rmHandler.cadastroRM.celular}"/>
+					<h:outputText value="E-mail:" styleClass="titulo_campos"/> <h:inputText value="#{rmHandler.cadastroRM.email}" required="true"/>
+					<h:selectBooleanCheckbox title="Ativo" value="#{rmHandler.cadastroRM.ativo}"/>
+						<h:outputText value="Ativo"/>
+					<!-- Mostra as msgs de erro-->
+					<h:messages></h:messages>
+					<h:commandButton styleClass="BUTTON_imagem" value="Gravar" action="#{rmHandler.salvar}"/>
+				</t:panelGrid>
+			</h:form>
+			<h:form>
+				<t:panelGrid align="center">
+					<h:dataTable value="#{rmHandler.allCadastroRM}" id="tabelaDados" rows="5" var="crm" rendered="#{not empty rmHandler.allCadastroRM}"
+					styleClass="EDIT_BACKGROUND" headerClass="cabecalho"  rowClasses="linha1,linha2" >
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="ID"/>
+							</f:facet>
+							<h:outputText value="#{crm.id}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome"/>
+							</f:facet>
+							<h:outputText value="#{crm.nomeRM}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="CPF"/>
+							</f:facet>
+							<h:outputText value="#{crm.CPF}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="RG"/>
+							</f:facet>
+							<h:outputText value="#{crm.RG}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Ramal"/>
+							</f:facet>
+							<h:outputText value="#{crm.ramal}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Telefone Res."/>
+							</f:facet>
+							<h:outputText value="#{crm.telefoneResidencial}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Telefone Cel."/>
+							</f:facet>
+							<h:outputText value="#{crm.celular}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="E-mail"/>
+							</f:facet>
+							<h:outputText value="#{crm.email}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Ativo"/>
+							</f:facet>
+							<h:outputText value="#{crm.ativo}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Alteração"/>
+							</f:facet>
+							<h:commandLink actionListener="#{rmHandler.carregaCadastroRM}">
+								<h:outputText value="Alterar"/>
+								<f:param id="editId" name="id" value="#{crm.id}"/>
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Exclusão"/>
+							</f:facet>
+							<h:commandLink actionListener="#{rmHandler.excluirCadastroRM}">
+								<h:outputText value="Excluir"/>
+								<f:param id="IdEdit" name="id" value="#{crm.id}"/>
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+						<t:dataScroller for="tabelaDados" paginator="true" paginatorMaxPages="7"></t:dataScroller>
+				</t:panelGrid>
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>

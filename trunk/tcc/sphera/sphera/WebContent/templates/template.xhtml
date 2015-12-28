@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich">
+ <f:view locale="#{idiomaController.lingua}">     
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"/>
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.5)"/>
+<meta http-equiv="Page-Exit" content="blendTrans(Duration=0.5)"/> 
+
+<title>
+	<ui:insert name="title"/>
+</title>
+<link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/css/common.css"/>
+<script type="text/javascript" src="${facesContext.externalContext.requestContextPath}/script/common.js"></script>
+<link rel="shortcut icon" href="${facesContext.externalContext.requestContextPath}/images/favicon.ico" />
+
+</head>
+
+
+<body onload="hideLoad();">
+<table width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<a4j:outputPanel layout="block" id="pnlLoad" style="display:none;">
+				<h:graphicImage id="imgLoad" url="/images/carregando.gif" alt="#{i18n.loading}" />
+				<h:outputText value="#{i18n.loading}"/>
+			</a4j:outputPanel>	
+		</td>
+		<td align="right">
+			<ui:include src="/templates/include/header.xhtml" />
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" width="100">
+		<h:form id="home">
+			<h:commandLink action="login" onclick="showLoad();">
+				<h:graphicImage alt="logo" value="/images/logo_bco.jpg" width="120px"></h:graphicImage>
+			</h:commandLink>
+		</h:form>	
+		</td>
+		<td ><ui:include src="/templates/include/menu.xhtml" /></td>
+	</tr>
+	<tr valign="top">
+		<td colspan="2" align="center"  valign="top" height="300px;">
+			<div align="center" style="center">
+				<ui:insert name="pageTitle">
+				</ui:insert>
+				<a4j:outputPanel id="messageDiv" ajaxRendered="true">
+					<h:panelGrid id="messageGrid" columns="2">
+						<h:graphicImage rendered="#{facesContext.maximumSeverity.ordinal gt 3}" height="16" width="16" url="/images/error.gif" alt="#{i18n.error}"/>
+						<h:graphicImage rendered="#{facesContext.maximumSeverity.ordinal gt 1 and facesContext.maximumSeverity.ordinal lt 2}" height="20" width="20" url="/images/warning.png" alt="#{i18n.warning}" />
+						<h:graphicImage rendered="#{facesContext.maximumSeverity.ordinal eq 0}" height="20" width="20" url="/images/info.jpg" alt="#{i18n.passed}"/>
+						<h:messages globalOnly="true" layout="table" id="message" errorClass="rich-message-label" infoClass="info-message" warnClass="bold" infoStyle="bold"/>
+					</h:panelGrid>
+				</a4j:outputPanel>
+				<ui:insert name="body">
+					Content
+				</ui:insert>
+			</div>
+	</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">		
+			<ui:include src="/templates/include/footer.xhtml" />
+		</td>
+	</tr>
+</table>
+</body>
+</f:view>
+</html>

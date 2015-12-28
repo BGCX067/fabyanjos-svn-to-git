@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:chart="http://sourceforge.net/projects/jsf-comp">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="body">
+
+		<h3><h:outputText value="#{i18n.project}"/></h3>
+		
+	<rich:tabPanel id="tabProj" switchType="client" height="600px" width="90%" >
+		<rich:tab id="info" label="#{i18n.info}" style="height: 100%; text-align: left;">
+			<h:panelGrid id="infoGrid" columns="2" columnClasses="proj-colOne,proj-colTwo" width="70%">
+				<h:outputText styleClass="bold" id="lblNome" value="#{i18n.lblNome}" />
+				<h:outputText id="name" value="#{projetoController.projeto.nome}" />
+				<h:outputText id="lblCliente" styleClass="bold" value="#{i18n.client}"/>
+				<h:outputText id="cliente" value="#{projetoController.projeto.cliente.nome}"/>
+				<h:outputText styleClass="bold" id="lblDescr" value="#{i18n.lblDescr}" />
+				<h:outputText value="#{projetoController.projeto.descricao}" id="descr"/>
+				<h:outputText styleClass="bold" value="#{i18n.lblIniPlanejado}" id="lblIniPla"/>
+				<h:outputText id="iniPla" value="#{projetoController.projeto.inicioPlanejado}">
+					<f:convertDateTime pattern="#{i18n.datePattern}"/>
+				</h:outputText>
+				<h:outputText styleClass="bold" id="lblFimPla" value="#{i18n.lblFimPlanejado}"/>
+				<h:outputText id="fimPla" value="#{projetoController.projeto.fimPlanejado}">
+					<f:convertDateTime pattern="#{i18n.datePattern}"/>
+				</h:outputText>
+				<h:outputText value="#{i18n.lblCustoTotalPlan}" styleClass="bold" id="lblCustPTot"/>
+				<h:outputText id="custoTotal" value="#{projetoController.projeto.custoPlanejadoTotal}">
+					<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+				</h:outputText>
+				<h:outputText styleClass="bold" id="custRH" value="#{i18n.lblCustoPlanejadoRH}"/>
+				<h:outputText id="cusrRHValue" value="#{projetoController.projeto.custoPlanejadoRH}">
+					<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+				</h:outputText>
+				<h:outputText styleClass="bold" id="custMat" value="#{i18n.lblCustoPlanejadoMaterial}"/>
+				<h:outputText id="custMatValue" value="#{projetoController.projeto.custoPlanejadoMaterial}">
+					<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+				</h:outputText>
+				<h:outputText id="lblStatus" value="#{i18n.lblStatus}" styleClass="bold"/>
+				<h:outputText id="stat1" value="#{i18n['aguardando']}" rendered="#{projetoController.projeto.status eq 'AGUARDANDO'}"/>
+				<h:outputText id="stat2" value="#{i18n['concluido']}" rendered="#{projetoController.projeto.status eq 'CONCLUIDO'}"/>
+				<h:outputText id="stat3" value="#{i18n['inprogress']}" rendered="#{projetoController.projeto.status eq 'INPROGRESS'}"/>
+				
+				<h:outputText styleClass="bold" id="lblReps" value="#{i18n.lblResponsavel}"/>
+				<h:outputText value="#{projetoController.projeto.responsavel.nome}" id="reps"/>
+
+			</h:panelGrid>
+			<rich:spacer height="30px"/>
+			<h:form id="authForm">
+				<a4j:outputPanel id="pnlProgress" layout="block">
+					<a4j:commandButton onclick="showLoad()" oncomplete="hideLoad()" action="#{projetoController.autorizar}" id="authButon" rendered="#{projetoController.showButtonAutorizar}" value="#{i18n.autorizate}" reRender="infoGrid,authForm"/>
+					<h:panelGrid id="progressGrip" columns="2" rendered="#{projetoController.progressBarShow}">
+						<h:outputText rendered="#{projetoController.progressBarShow}" styleClass="bold" value="#{i18n.progress} :"/>
+						<rich:progressBar interval="600000" value="#{projetoController.progressValue}" minValue="-1" maxValue="100" label="#{projetoController.progressValue} %" />
+					</h:panelGrid>
+				</a4j:outputPanel>
+			</h:form>
+		</rich:tab>
+		<rich:tab id="download" label="#{i18n.lblProjFile}" style="height: 100%; text-align: left;">
+			<h:panelGrid columns="5" columnClasses="arquivos-panel" >
+					<h:panelGrid styleClass="arquivo" columnClasses="arquivos-panel">
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/DocumentoTCC_v0.3.1.doc">
+						<h:graphicImage value="/images/img_doc.gif"/>
+						</h:outputLink>
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/DocumentoTCC_v0.3.1.doc">
+						<h:outputText value="Documento TCC_v0.3.1.doc"/>
+						</h:outputLink>
+					</h:panelGrid>
+					<h:panelGrid styleClass="arquivo" columnClasses="arquivos-panel">
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/Programacao_de_Apresentacao_de_TCC.pdf">	
+							<h:graphicImage value="/images/img_pdf.gif"/>
+							</h:outputLink>
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/Programacao_de_Apresentacao_de_TCC.pdf">
+							<h:outputText value="Programacao de Apresentacao de TCC.pdf"/>
+						</h:outputLink>
+					</h:panelGrid>
+					<h:panelGrid styleClass="arquivo" columnClasses="arquivos-panel">
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/TCC_1_Defesa_Simulada.ppt">
+							<h:graphicImage value="/images/img_ppt.gif"/>
+						</h:outputLink>
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/TCC_1_Defesa_Simulada.ppt">	
+							<h:outputText value="TCC 1 Defesa Simulada.ppt"/>
+						</h:outputLink>
+					</h:panelGrid>
+			
+			</h:panelGrid>
+			<h:form id="up">
+				<rich:fileUpload fileUploadListener="#{projetoController.listener}"
+				id="upload" acceptedTypes="#{configBean.acceptedFiles}"	stopControlLabel="#{i18n.uploadStopControlLabel}"
+				transferErrorLabel="#{i18n.uploadTransferErrorLabel}" clearControlLabel="#{i18n.uploadClearControlLabel}"
+				cancelEntryControlLabel="#{i18n.uploadCancelEntryControlLabel}" addControlLabel="#{i18n.uploadAddControlLabel}"
+				stopEntryControlLabel="#{i18n.uploadStopControlLabel}" sizeErrorLabel="#{i18n.ulploadSizeErrorLabel}"
+				progressLabel="#{i18n.uploadProgressLabel}" maxFilesQuantity="5" doneLabel="#{i18n.uploadDoneLabel}"
+				clearAllControlLabel="#{i18n.uploadClearAllControlLabel}">
+					
+				</rich:fileUpload>
+			</h:form>
+		</rich:tab>
+		<rich:tab id="wbs" label="#{i18n.wbs}" style="height: 100%; text-align: left;">
+			<ui:include src="wbs.xhtml" />
+		</rich:tab>
+		<rich:tab id="gantTab" label="#{i18n.ganttChart}" rendered="#{not empty projetoController.projeto.fases}">
+			<h:panelGroup id="picture">
+				<chart:chart id="ganttChart" type="gantt" datasource="#{projetoController.ganttChart}"
+				title="#{projetoController.projeto}" is3d="false" width="600" height="380"
+				legend="true" 
+				>
+				</chart:chart>
+				<rich:contextMenu event="oncontextmenu" attachTo="ganttChart" submitMode="none">
+					<rich:menuItem value="#{i18n.zoomIn}" onclick="enlarge($('ganttChart'));" id="zin"></rich:menuItem>
+					<rich:menuItem value="#{i18n.zoomOut}" onclick="decrease($('ganttChart'));" id="zout"></rich:menuItem>
+					<rich:menuItem value="#{i18n.zoomNormal}" onclick="setSize($('ganttChart'),600,380)" id="backNorm"></rich:menuItem>
+				</rich:contextMenu>
+			</h:panelGroup>
+			
+		</rich:tab>
+	</rich:tabPanel>
+	
+</ui:define>
+</ui:composition>
+
+</html>

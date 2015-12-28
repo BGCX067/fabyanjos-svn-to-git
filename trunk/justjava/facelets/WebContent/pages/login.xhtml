@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      <head>
+      	<link href="../css/master.css" rel="stylesheet" type="text/css"/>
+		<title>Autentica&ccedil;&atilde;o</title>
+      </head>
+      <body>
+      <f:view>
+			<h:form>
+				<table height="600px" border="0" cellpadding="0" cellspacing="0" align="center">
+					<tr>
+						<td valign="center" align="center">
+							<table width="560px" border="0" cellpadding="3" cellspacing="0"  align="center" class="FORM_BG">
+								<tr>
+									<td align="center" class="titulo_tabela" colspan="2">
+			        					<center>
+			        						Autentica&ccedil;&atilde;o
+										</center>
+									</td>
+								</tr>
+			        			<tr>
+			        				<td align="right" style="width: 200px">
+										Login:
+									</td>
+			        				<td align="left" style="width: 360px">
+										&nbsp;<h:inputText value="#{autenticador.login}"/>
+									</td>
+								</tr>
+			        			<tr>
+			        				<td align="right">
+										Senha:
+									</td>
+			        				<td align="left">
+										&nbsp;<h:inputSecret value="#{autenticador.senha}"/>
+									</td>
+								</tr>
+								<tr>
+			        				<td align="center" colspan="2">
+										<h:commandButton value="Entrar" action="#{autenticador.logar}" styleClass="BUTTON_imagem"/>
+									</td>
+								</tr>
+								<tr>
+								<td>
+								<!-- Mostra as msgs de erro-->
+								<h:messages></h:messages>
+								</td>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+				</table>
+			</h:form>
+		</f:view>
+	</body>
+</html>

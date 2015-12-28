@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      template="/pages/template/common.xhtml">
+	<ui:define name="pageHeader">Cadastro de Visita</ui:define>
+	<ui:define name="body">
+		<f:view>
+			<h:form>
+			 <t:panelGrid align="center" columns="2">
+			 	<h:outputText value="Cliente:" id="lblCli" styleClass="titulo_campos"/>
+					<h:selectOneMenu id="slCl" binding="#{visitaHandler.htmlSelectOneMenuCliente}">
+                		<f:selectItems value="#{visitaHandler.clientes}"/>
+                	</h:selectOneMenu>
+			 	<h:outputText value="RM:" id="rmlabel" styleClass="titulo_campos"/>
+					<h:selectOneMenu id="slRm" binding="#{visitaHandler.htmlSelectOneMenuRM}">
+                		<f:selectItems value="#{visitaHandler.RMS}"/>
+                </h:selectOneMenu>
+                <h:outputText id="lblCpn" value="Campanha:" styleClass="titulo_campos"/>
+					<h:selectOneMenu id="slcCpn" binding="#{visitaHandler.htmlSelectOneMenuCampanha}">
+                		<f:selectItems value="#{visitaHandler.campanhas}"/>
+                </h:selectOneMenu>
+             	<h:outputText id="lblData" value="Data:" styleClass="titulo_campos"/> <t:inputCalendar id="inpCal" value="#{visitaHandler.cadastroVisita.data.time}" renderAsPopup="true"/>
+             	<h:outputText id="dvisita" value="Descrição da Visita:" styleClass="titulo_campos"/> <h:inputTextarea id="dVis" value="#{visitaHandler.cadastroVisita.descricao}"/>
+
+				<!-- ActionListener pega o evento da tela-->
+               <h:commandButton styleClass="BUTTON_imagem" value="Gravar" actionListener="#{visitaHandler.salvar}"/>
+               <!-- Mostra as msgs de erro-->
+								<h:messages></h:messages>
+             </t:panelGrid>
+			</h:form>
+			<h:form>
+				<t:panelGrid align="center">
+					<h:dataTable value="#{visitaHandler.allVisitas}" id="tabelaDados" rows="5" var="cv" rendered="#{not empty visitaHandler.allVisitas}"
+					styleClass="EDIT_BACKGROUND" headerClass="cabecalho"  rowClasses="linha1,linha2" >
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="ID"/>
+							</f:facet>
+							<h:outputText value="#{cv.id}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="RM"/>
+							</f:facet>
+							<h:outputText value="#{cv.cadastroRM.nomeRM}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Cliente"/>
+							</f:facet>
+							<h:outputText value="#{cv.cadastroCliente.nomeCliente}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Campanha"/>
+							</f:facet>
+							<h:outputText value="#{cv.cadastroCampanha.nomeCampanha}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Data"/>
+							</f:facet>
+							<h:outputText value="#{cv.data.time}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Descrição"/>
+							</f:facet>
+							<h:outputText value="#{cv.descricao}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Alteração"/>
+							</f:facet>
+							<h:commandLink actionListener="#{visitaHandler.carregaCadastroVisita}">
+								<h:outputText value="Alterar"/>
+								<f:param id="editId" name="id" value="#{cv.id}"/>
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Exclusão"/>
+							</f:facet>
+							<h:commandLink actionListener="#{visitaHandler.excluirCadastroVisita}">
+								<h:outputText value="Excluir"/>
+								<f:param id="idEdit" name="id" value="#{cv.id}"/>
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+						<t:dataScroller for="tabelaDados" paginator="true" paginatorMaxPages="7"></t:dataScroller>
+				</t:panelGrid>
+			</h:form>
+		</f:view>
+	</ui:define>
+
+</ui:composition>

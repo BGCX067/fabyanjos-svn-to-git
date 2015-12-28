@@ -1,0 +1,69 @@
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      template="/pages/template/common.xhtml">
+
+	<ui:define name="body">
+		<div jsfc="h:form" id="loginForm">
+	      <table>
+	      	<tbody>
+	      		<tr>
+	      			<td align="right" class="label">
+	      				#{lbl.email}: 
+	      			</td>
+	      			<td align="left">
+	      				<input type="text" jsfc="h:inputText" 
+	      					value="#{login.usuario.email}" id="email" 
+	      					required="true" requiredMessage="#{error.required}" class="input" size="20"/>
+	      			</td>
+	      			<td align="left" class="error">
+	      				<label jsfc="h:message" for="email"/>
+	      			</td>
+	      		</tr>
+	      		<tr>
+	      			<td align="right" class="label">
+	      				#{lbl.pass}: 
+	      			</td>
+	      			<td align="left">
+	      				<input type="password" jsfc="h:inputSecret" 
+	      					value="#{login.usuario.password}" id="pass" 
+	      					required="true" requiredMessage="#{error.required}" class="input" size="20"/>
+	      			</td>
+	      			<td align="left" class="error">
+	      				<label jsfc="h:message" for="pass"/>
+	      			</td>
+	      		</tr>
+	      		<tr>
+	      			<td align="right" colspan="2">
+	      				#{lbl.clique} <a href="cadastrar.usuario.jsf">#{lbl.aqui}</a> #{lbl.efetuecadastro} 
+	      			</td>
+	      		</tr>
+	      		<tr>
+	      			<td colspan="2" align="right">
+	      				<input type="submit" jsfc="h:commandButton" value="Login" action="#{login.login}" class="button"/> 
+	      			</td>
+	      		</tr>
+
+	      		<tr>
+	      			<td colspan="2" align="center" class="error">
+	      				<h:outputLabel value="#{error.userpassword}" for="#{requestScope}" id="invalidUserOrPassword" 
+	      					rendered="#{not empty cantLogin}"/> 
+      					<h:outputLabel value="#{error.notloginuser}" for="#{sessionScope}" id="notLogInUser" 
+      						rendered="#{not empty notLogInUser}"/> 
+	      			</td>
+	      		</tr>
+	      		
+	      	</tbody>
+	      </table>
+	    </div>
+	</ui:define>
+	<ui:define name="menu">
+		<div> </div>
+	</ui:define>
+
+</ui:composition>

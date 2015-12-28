@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:sphera="http://org.sphera/mytags">
+
+<a4j:region id="regCgo">
+	<h:form id="perfil">
+	<h:inputHidden value="#{perfilController.perfil.id}"/>
+		<h:panelGrid  width="80%" columns="3" columnClasses="colunOne,colunTwo,colunThree" id="fields">
+			
+			<h:outputLabel value="#{i18n.lblNome}" for="nome"/>
+			<h:inputText id="nome" value="#{perfilController.perfil.nome}" required="true"/>
+			<sphera:message validID="nome"/>
+			
+			<h:outputLabel value="#{i18n.lblAcessos}" for="acesso"/>
+			<rich:pickList copyAllControlLabel="#{i18n.selectAll}" copyControlLabel="#{i18n.selectThis}" removeAllControlLabel="#{i18n.removeAll}" removeControlLabel="#{i18n.removeThis}" converter="acessoConvert" required="true" id="acesso" value="#{perfilController.perfil.acessos}">
+				<f:selectItems value="#{acessoController.comboList}"/>
+	        </rich:pickList>
+			<sphera:message validID="acesso"/>
+			
+			<h:outputLabel value="#{i18n.lblDescricao}" for="descricao"/>
+			<h:inputTextarea id="descricao" value="#{perfilController.perfil.descricao}" rows="5" cols="45"/>
+			<sphera:message validID="descricao"/>
+			
+		</h:panelGrid>
+
+		<h:panelGrid columns="2">
+			<a4j:commandButton onclick="showLoad();" oncomplete="hideLoad();" action="#{perfilController.save}" value="#{i18n.save}" reRender="tabPanel,message"/>
+			<a4j:commandButton onclick="showLoad();" oncomplete="hideLoad();" action="#{perfilController.goToList}" value="#{i18n.cancel}" immediate="true" reRender="tabPanel,message"/>
+		</h:panelGrid>
+	</h:form>
+</a4j:region>
+</html>

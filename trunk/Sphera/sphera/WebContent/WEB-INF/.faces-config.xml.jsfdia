@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#app#projeto#tab.xhtml"
+  PATH="/app/projeto/tab.xhtml" SHAPE="400,80,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#app#departamento#tab.xhtml"
+  PATH="/app/departamento/tab.xhtml" SHAPE="400,136,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#app#cargo#tab.xhtml"
+  PATH="/app/cargo/tab.xhtml" SHAPE="376,264,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:" SHAPE="24,48,53,154" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="projetos::#app#projeto#tab.xhtml"
+    NAME="output" PATH="/app/projeto/tab.xhtml"
+    TARGET="rules:#app#projeto#tab.xhtml" TITLE="projetos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="departamentos::#app#departamento#tab.xhtml"
+    NAME="output1" PATH="/app/departamento/tab.xhtml"
+    TARGET="rules:#app#departamento#tab.xhtml" TITLE="departamentos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfilForm::#app#perfil.xhtml"
+    NAME="output4" PATH="/app/perfil.xhtml"
+    SHAPE="76,112,208,112,208,208,407,208"
+    TARGET="rules:#app#perfil.xhtml" TITLE="perfilForm" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cargos::#app#cargo#tab.xhtml" NAME="output5"
+    PATH="/app/cargo/tab.xhtml" TARGET="rules:#app#cargo#tab.xhtml"
+    TITLE="cargos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="usuarios::#app#usuario#tab.xhtml"
+    NAME="output8" PATH="/app/usuario/tab.xhtml"
+    TARGET="rules:#app#usuario#tab.xhtml" TITLE="usuarios" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="clientes::#app#cliente#tab.xhtml"
+    NAME="output11" PATH="/app/cliente/tab.xhtml"
+    TARGET="rules:#app#cliente#tab.xhtml" TITLE="clientes" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="project::#app#projeto#project.xhtml"
+    NAME="output2" PATH="/app/projeto/project.xhtml"
+    TARGET="rules:#app#projeto#project.xhtml" TITLE="project" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login::#app#home.xhtml" NAME="output3"
+    PATH="/app/home.xhtml" TARGET="rules:#app#home.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="fases::#app#fase#tab.xhtml" NAME="output6"
+    PATH="/app/fase/tab.xhtml"
+    SHAPE="76,208,128,208,128,376,128,376,128,608,231,608"
+    TARGET="rules:#app#fase#tab.xhtml" TITLE="fases" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="fase::#app#fase#phase.xhtml" NAME="output7"
+    PATH="/app/fase/phase.xhtml"
+    SHAPE="76,224,80,224,80,368,42,368,42,584,63,584"
+    TARGET="rules:#app#fase#phase.xhtml" TITLE="fase" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="tarefas::#app#tarefa#tab.xhtml"
+    NAME="output9" PATH="/app/tarefa/tab.xhtml"
+    TARGET="rules:#app#tarefa#tab.xhtml" TITLE="tarefas" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="tarefa::#app#tarefa#task.xhtml"
+    NAME="output10" PATH="/app/tarefa/task.xhtml"
+    TARGET="rules:#app#tarefa#task.xhtml" TITLE="tarefa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#app#perfil.xhtml" PATH="/app/perfil.xhtml"
+  SHAPE="408,200,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#app#cliente#tab.xhtml"
+  PATH="/app/cliente/tab.xhtml" SHAPE="280,416,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#app#usuario#tab.xhtml"
+  PATH="/app/usuario/tab.xhtml" SHAPE="320,344,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#app#home.xhtml" PATH="/app/home.xhtml"
+  SHAPE="264,544,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#app#projeto#project.xhtml"
+  PATH="/app/projeto/project.xhtml" SHAPE="264,496,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#app#fase#tab.xhtml"
+  PATH="/app/fase/tab.xhtml" SHAPE="232,600,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#app#fase#phase.xhtml"
+  PATH="/app/fase/phase.xhtml" SHAPE="64,576,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#app#tarefa#tab.xhtml"
+  PATH="/app/tarefa/tab.xhtml" SHAPE="545,317,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#app#tarefa#task.xhtml"
+  PATH="/app/tarefa/task.xhtml" SHAPE="557,400,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS ENTITY="JSFProcess">
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:" SHAPE="32,17,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::0" NAME="item">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="success::#pages#success.xhtml" NAME="output"
+    PATH="/pages/success.xhtml" TARGET="rules:#pages#success.xhtml" TITLE="success"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="error::#pages#error.xhtml" NAME="output1"
+    PATH="/pages/error.xhtml" TARGET="rules:#pages#error.xhtml" TITLE="error"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="listContacts::#pages#listar.contatos.xhtml" NAME="output2"
+    PATH="/pages/listar.contatos.xhtml"
+    TARGET="rules:#pages#listar.contatos.xhtml" TITLE="listContacts"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#pages#error.xhtml"
+  PATH="/pages/error.xhtml" SHAPE="256,177,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#success.xhtml" PATH="/pages/success.xhtml" SHAPE="256,33,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#pages#login.xhtml"
+  PATH="/pages/login.xhtml" SHAPE="32,273,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#pages#login.xhtml:0"
+   NAME="item" PATH="/pages/login.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="login::#pages#home.xhtml" NAME="output" PATH="/pages/home.xhtml"
+    TARGET="rules:#pages#home.xhtml" TITLE="login"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#pages#home.xhtml"
+  PATH="/pages/home.xhtml" SHAPE="240,289,0,0"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#listar.contatos.xhtml"
+  PATH="/pages/listar.contatos.xhtml" SHAPE="272,433,0,0"/>
+</PROCESS>

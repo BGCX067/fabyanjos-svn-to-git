@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FILESYSTEMS APPLICATION_NAME="facelets" ENTITY="FileSystems"
+ VERSION="2.0.0.beta3" WORKSPACE_HOME="./WebContent/WEB-INF">
+ <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%redhat.workspace%" NAME="WEB-INF"/>
+ <FILESYSTEM ENTITY="FileSystemFolder" INFO="Content-Type=Web"
+  LOCATION="%redhat.workspace%/.." NAME="WEB-ROOT"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%redhat.workspace%/../../JavaSource" NAME="src"/>
+ <FILESYSTEM ENTITY="FileSystemFolder" LOCATION="%redhat.workspace%/lib" NAME="lib"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%redhat.workspace%/classes" NAME="classes"/>
+ <FILESYSTEM ENTITY="FileSystemFolder"
+  LOCATION="%redhat.workspace%/../../ant" NAME="build"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-beanutils.jar" NAME="lib-commons-beanutils.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-codec.jar" NAME="lib-commons-codec.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-collections.jar" NAME="lib-commons-collections.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-digester.jar" NAME="lib-commons-digester.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-el.jar" NAME="lib-commons-el.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-fileupload.jar" NAME="lib-commons-fileupload.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-lang.jar" NAME="lib-commons-lang.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-logging.jar" NAME="lib-commons-logging.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/commons-validator.jar" NAME="lib-commons-validator.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/jakarta-oro.jar" NAME="lib-jakarta-oro.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/jstl.jar" NAME="lib-jstl.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/log4j-1.2.8.jar" NAME="lib-log4j-1.2.8.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/myfaces-api-1.1.4.jar" NAME="lib-myfaces-api-1.1.4.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/myfaces-impl-1.1.4.jar" NAME="lib-myfaces-impl-1.1.4.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/portlet-api.jar" NAME="lib-portlet-api.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/struts.jar" NAME="lib-struts.jar"/>
+ <FILESYSTEM ENTITY="FileSystemJar" INFO="hidden=yes"
+  LOCATION="%redhat.workspace%/lib/tomahawk-1.1.4.jar" NAME="lib-tomahawk-1.1.4.jar"/>
+ <WEB ENTITY="JstWeb" MODEL_PATH="/web.xml" SERVLET_VERSION="2.5">
+  <MODULE ENTITY="WebJSFModule" MODEL_PATH="/faces-config.xml"
+   ROOT="WEB-ROOT" SRC="src" URI="/WEB-INF/faces-config.xml"/>
+ </WEB>
+</FILESYSTEMS>

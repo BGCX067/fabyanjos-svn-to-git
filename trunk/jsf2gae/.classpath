@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jsf-api.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/jsf-impl.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/prettyfaces-jsf2-3.0.1.jar" sourcepath="C:/Documents and Settings/426207646/Meus documentos/Downloads/libs/prettyfaces-jsf2-3.1.0-sources.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

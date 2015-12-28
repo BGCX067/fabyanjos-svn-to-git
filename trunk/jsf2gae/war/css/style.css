@@ -1,0 +1,207 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
+	font-size: 13px;
+	color: #061C37;
+	background: #014D5D url(/img/background.png) repeat-x;
+}
+
+* {
+	margin: 0 auto 0 auto;
+	text-align:left;
+}
+
+a:link {
+	text-decoration: none;
+	color: #0099CC;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #0099CC;
+}
+a:active {
+	text-decoration: underline;
+	color: #0099CC;
+}
+a:hover {
+	text-decoration:underline;	
+}
+
+html, body {
+	text-align: center;
+}
+p {
+	text-align: left;
+}
+
+#page {
+	display: block; 
+	height:100%;
+	position: relative; 
+	overflow: hidden; 
+	width: 954px;
+  	text-align: center;
+}
+
+ul#topnav {
+	margin-top: 30px;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font-size: 16;
+	font-family: "Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
+	text-align: center;
+}
+ul#topnav li{
+	overflow: hidden;  /*--Important - Masking out the hover state by default--*/
+	float: left;
+	height: 35px;
+	width: 100px;	
+	text-align: center;	
+}
+ul#topnav a, ul#topnav span { /*--The <a> and <span> share the same properties since the <span>  will be a duplicate of the <a> tag--*/
+	padding: 10px 20px;
+	float: left;
+	text-decoration: none;
+	color: #CDE2FC;
+	text-transform: uppercase;
+	clear: both;
+	width: 100%;
+	line-height: 20px; /*--Vertical alignment of text--*/
+}
+ul#topnav a{ /*--This is basically the hover state of navigation--*/
+	color: #0C61C9;
+	background-image: url(/img/tab.png);
+	background-position: left bottom;
+}
+ul#topnav span{ /*--Default state of navigation--*/
+	background-position: left top;
+}
+
+#mainPicture {
+	width:954px;
+	height:215px;
+	background-color:#FFFFFF;
+}
+
+#mainPicture .picture	{
+	position:relative;
+	width:934px;
+	height:220px;
+	top:10px;
+	margin-left:10px;
+}
+
+#headerTitle {
+	position:absolute;
+	top:30px;
+	left:40px;
+	font-size:25px;
+	color: #000099;
+	font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
+}
+
+#headerSubtext {
+	position:absolute;
+	top:160px;
+	left:50px;
+	font-size:16px;
+	color:#000099;
+	font-family:"Adobe Garamond Pro Bold", Georgia, "Times New Roman", Times, serif;
+}
+
+.contentBox {
+	width:954px;
+	height:100%;
+	background-color:#FFFFFF;
+	margin-top:10px;
+}
+
+.contentBox .innerBox {
+	width:934px;
+	height:100%;
+	margin-top: 10px;
+	margin-left:10px;
+	background-image:url(/img/content_back.png);
+	background-repeat:repeat-x;
+	padding-bottom:35px;
+	overflow: hidden;
+}
+
+.contentTitle {
+	font-size:19px;
+	margin-bottom:0px;
+	padding-top:18px;
+	margin-left:15px;
+	margin-top:15px;
+}
+
+.contentText {
+	font-size:13px;
+	line-height:24px;
+	margin-left:13px;
+	margin-right:13px;
+}
+
+#footer {
+	clear:both;
+	width: 954px;
+	height:16px;
+	background: url(/img/footer.png) no-repeat;
+	text-align:center;
+	font-size:9px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#386172;
+	padding-top:5px;
+}
+
+#footer a {
+	text-decoration:none;
+	font-size:9px;
+	color:#386172;
+}
+
+#parallax {
+	height:195px;
+	overflow:hidden;
+	position:relative;
+	width:934px;
+	background:#96ACC1 none repeat scroll 0 0;
+	clear:right;
+}
+.clear {
+	display:block;
+}
+#contentColumn {
+	width:714px;
+	float: left;
+}
+#navColumn {
+	width:200px;
+	padding-top:50px;
+	float: right;
+}
+
+li.cloud-percent1 { font-size:70% }
+li.cloud-percent2 { font-size:80% }
+li.cloud-percent3 { font-size:80% }
+li.cloud-percent4 { font-size:90% }
+li.cloud-percent5 { font-size:100% }
+/* you can bold higher frequency tags or color them */
+li.cloud-percent6 { font-size:110%; font-weight:100;}
+li.cloud-percent6 { font-size:110%; font-weight:100;}
+li.cloud-percent7 { font-size:120%; font-weight:200;}
+li.cloud-percent8 { font-size:130%; font-weight:300;}
+li.cloud-percent9 { font-size:140%; font-weight:400;}
+li.cloud-percent10{ font-size:150%; font-weight:500;}
+/* neded To make container div expand with the content layout changes */
+.Label div {Overflow:Auto}
+.widget-content ul {
+	list-style: none;
+}
+.subHeader {
+	margin: 4px;
+}

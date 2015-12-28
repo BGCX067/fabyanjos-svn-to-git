@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+
+			<h:form id="list">
+				<a4j:keepAlive beanName="departamentoController"/>
+				<rich:dataTable rendered="#{not empty departamentoController.departamentos}" rows="15" id="dptList" value="#{departamentoController.departamentos}" var="dept">
+					<rich:column filterBy="#{dept.nome}" filterEvent="onkeyup" sortBy="#{dept.nome}">
+						<f:facet name="header">
+							<h:outputText value="#{i18n.deptName}"/>
+						</f:facet>
+						<a4j:commandLink id="viewDptComLink" action="#{departamentoController.view}" value="#{dept.nome}" reRender="view" onclick="showLoad();" oncomplete="hideLoad();#{rich:component('view')}.show()">
+							<f:setPropertyActionListener value="#{dept}" target="#{departamentoController.departamento}" />
+						</a4j:commandLink>
+					</rich:column>
+					<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n.actions}"/>
+						</f:facet>
+						<h:panelGrid columns="3">
+							<a4j:commandLink onclick="showLoad();" oncomplete="hideLoad();" actionListener="#{departamentoController.edit}" value="#{i18n.edit}" reRender="tabPanel">
+								<f:setPropertyActionListener value="#{dept}" target="#{departamentoController.departamento}" />
+							</a4j:commandLink>
+							<h:outputLink value="#" onclick="#{rich:component('confirm')}.show()" >
+								<h:outputText value="#{i18n.delete}" id="del"/>
+							</h:outputLink>
+							
+							<a4j:commandLink action="#{departamentoController.view}" value="#{i18n.view}" reRender="view" onclick="showLoad();" oncomplete="hideLoad();#{rich:component('view')}.show()">
+								<f:setPropertyActionListener value="#{dept}" target="#{departamentoController.departamento}" />
+							</a4j:commandLink>
+							
+							<rich:modalPanel id="confirm" width="150" height="100">
+								<f:facet name="header">
+									<h:outputText value="#{i18n.confirmDelete}"/>
+								</f:facet>
+								<table align="center">
+									<tr>
+										<td align="center">
+								<a4j:commandButton oncomplete="hideLoad();" onclick="showLoad();" value="#{i18n.confirmOk}" id="doAct" action="#{departamentoController.delete}" reRender="dptList,message">
+									<rich:componentControl attachTo="doAct" for="confirm" operation="hide" event="onclick">
+									</rich:componentControl>
+									<f:setPropertyActionListener value="#{dept}" target="#{departamentoController.departamento}" />
+								</a4j:commandButton>
+								</td>
+										<td align="center">
+								<input type="button" value="#{i18n.confirmCancel}" onclick="#{rich:component('confirm')}.hide()"/>
+								</td>
+									</tr>
+								</table>
+							</rich:modalPanel>
+						</h:panelGrid>
+					</rich:column>
+					
+					<f:facet name="footer">
+						<rich:datascroller onclick="showLoad();" oncomplete="hideLoad();" for="dptList" renderIfSinglePage="false" id="scrol" immediate="true" maxPages="3" reRender="tabPanel"/>
+					</f:facet>
+				</rich:dataTable>
+			</h:form>
+
+	</ui:composition>
+
+</html>

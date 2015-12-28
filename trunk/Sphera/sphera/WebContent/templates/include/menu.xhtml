@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<ui:composition>
+<a4j:form id="mnuForm" >
+	<rich:toolBar id="mnuPTollB">
+		<rich:dropDownMenu id="mnuUser">
+			<f:facet name="label">
+				<h:panelGrid columns="2" id="pgMnuUser">
+					<h:outputText value="#{menu.user}" id="mnuUserTitle"/>
+				</h:panelGrid>
+			</f:facet>
+			<rich:menuItem id="mnuItemUserSystem" value="#{menu.userSystem}" action="#{usuarioController.list}"/>
+			<rich:menuItem id="mnuItemUserProfile" value="#{menu.userProfile}" action="#{perfilController.list}"/>
+			<rich:menuItem id="mnuItemUserDpt" value="#{menu.userDpt}" action="#{departamentoController.list}"/>
+			<rich:menuItem id="mnuItemUserCrg" value="#{menu.userCargo}" action="#{cargoController.list}"/>
+			<rich:menuItem id="mnuItemUserClient" value="#{menu.userClient}" action="#{clienteController.list}"/>
+		</rich:dropDownMenu>
+		<rich:dropDownMenu id="mnuWorkFlow">
+			<f:facet name="label">
+				<h:panelGrid columns="2" id="pgMnuWorkFl">
+					<h:outputText value="#{menu.workflow}" id="mnuWorkTitl"/>
+				</h:panelGrid>
+			</f:facet>
+			<rich:menuItem id="mnuItemWorkProj" value="#{menu.workflowProj}" action="#{projetoController.list}"/>
+			<rich:menuItem id="mnuItemWorkPhase" value="#{menu.workflowPhases}" action="#{faseController.list}"/>
+			<rich:menuItem id="mnuItemWorkTask" value="#{menu.workflowTask}" action="#{tarefaController.list}"/>
+			<rich:menuItem id="mnuItemWorkHour" value="#{menu.workflowHours}"/>
+		</rich:dropDownMenu>
+		<rich:dropDownMenu id="mnuInfra" >
+			<f:facet name="label">
+				<h:panelGrid columns="2" id="pgMnuInfra">
+					<h:outputText value="#{menu.infra}" id="mnuInfraTitl"/>
+				</h:panelGrid>
+			</f:facet>
+			<rich:menuItem id="mnuItemInfraProd" value="#{menu.infraProd}"/>
+			<rich:menuItem id="mnuItemInfraForn" value="#{menu.infraForn}"/>
+		</rich:dropDownMenu>
+		<rich:dropDownMenu id="mnuComm">
+			<f:facet name="label">
+				<h:panelGrid columns="2" id="pgMnuComm">
+					<h:outputText value="#{menu.comm}" id="mnuCommTitl"/>
+				</h:panelGrid>
+			</f:facet>
+			<rich:menuItem id="mnuItCommConf" value="#{menu.commConf}"/>
+			<rich:menuItem id="mnuItCommWiki" value="#{menu.commWiki}"/>
+		</rich:dropDownMenu>	
+		<rich:dropDownMenu id="mnuDoc">
+			<f:facet name="label">
+				<h:panelGrid columns="2" id="pgMnuDoc">
+					<h:outputText value="#{menu.docs}" id="mnuDocTitl"/>
+				</h:panelGrid>
+			</f:facet>
+			<rich:menuItem id="mnuItDocGer" value="#{menu.docsGer}"/>
+			<rich:menuItem id="mnuItDocTemp" value="#{menu.docsTempl}"/>
+		</rich:dropDownMenu>
+		<rich:dropDownMenu id="mnuInfo">
+			<f:facet name="label">
+				<h:panelGrid columns="2" id="pgMnuInfo">
+					<h:outputText value="#{menu.info}" id="mnuInfoTitl"/>
+				</h:panelGrid>
+			</f:facet>
+			<rich:menuItem id="mnuItemInfo" value="#{menu.info}"/>
+			<rich:menuItem id="mnuItemRep" value="#{menu.report}"/>
+		</rich:dropDownMenu>
+			
+	</rich:toolBar>
+</a4j:form>
+</ui:composition>
+</html>

@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<ui:composition>
+<f:view>
+	<h:form id="skin">
+		<h:selectOneMenu value="#{skinBean.skin}" onchange="submit()">
+			<f:selectItem itemLabel="BlueSky" itemValue="blueSky"/>
+			<f:selectItem itemLabel="Ruby" itemValue="ruby"/>
+			<f:selectItem itemLabel="Wine" itemValue="wine"/>
+		</h:selectOneMenu>
+	</h:form>
+</f:view>
+</ui:composition>
+</html>

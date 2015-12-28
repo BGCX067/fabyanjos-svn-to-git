@@ -1,0 +1,92 @@
+body {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	font-family: Verdana, "Times New Roman", Arial;
+	font-size: 9pt;
+}
+label{
+	font-family: Verdana, "Times New Roman", Arial;
+	font-size: 9pt;
+}
+p{
+	font-family: Verdana, "Times New Roman", Arial;
+	font-size: 9pt;
+}
+select{
+	width: 132px;
+	border: 1px solid #000000;
+	color: #999999;
+	font-family: Verdana, "Times New Roman", Arial;
+}
+.div-content{
+	overflow: auto;
+	height: 700px;
+	vertical-align: middle;
+	text-align: center;
+}
+img {
+	border: none;
+}
+
+.header-table {
+	width: 100%;
+	text-align: right;
+}
+
+input {
+	padding: 4px;
+}
+
+input,select {
+	border: 1px solid #aaa;
+	vertical-align: middle;
+}
+
+.rich-message-marker img {
+	padding-right: 7px;
+}
+
+.rich-message-label {
+	color: red;
+}
+.info-message{
+	color: green;
+}
+.colunOne{
+	text-align:right;
+	width: 25%;
+}
+.colunTwo{
+	text-align:left;
+	width: 30%;
+}
+.colunThree{
+	width: 45%;
+	text-align: left;
+}
+.bold{
+	font-weight: bold;
+}
+.col-aling-lef{
+	text-align: left;
+}
+.proj-colOne{
+	vertical-align:top;
+	font-family: Verdana, "Times New Roman", Arial;
+	font-size: 8pt;
+	text-align: left;
+	width: 35%;
+}
+.proj-colTwo{
+	text-align: left;
+	font-family: Verdana, "Times New Roman", Arial;
+	font-size: 8pt;
+}
+.arquivo{
+	width: 47px;
+	text-align: center;
+}
+arquivos-panel{
+	vertical-align: top;
+}

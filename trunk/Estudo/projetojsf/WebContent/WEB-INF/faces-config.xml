@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee           http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+ <managed-bean>
+  <managed-bean-name>usuario</managed-bean-name>
+  <managed-bean-class>br.com.estudo.bean.UsuarioMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>login</managed-bean-name>
+  <managed-bean-class>br.com.estudo.bean.LoginMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>contato</managed-bean-name>
+  <managed-bean-class>br.com.estudo.bean.ContatoMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <navigation-rule>
+  <navigation-case>
+   <from-outcome>success</from-outcome>
+   <to-view-id>/pages/success.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>error</from-outcome>
+   <to-view-id>/pages/error.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>listContacts</from-outcome>
+   <to-view-id>/pages/listar.contatos.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/pages/login.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>login</from-outcome>
+   <to-view-id>/pages/home.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <application>
+  <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>
+  <resource-bundle>
+   <base-name>br.com.estudo.resources.resources</base-name>
+   <var>msg</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>br.com.estudo.resources.label</base-name>
+   <var>lbl</var>
+  </resource-bundle>
+  <resource-bundle>
+   <base-name>br.com.estudo.resources.error</base-name>
+   <var>error</var>
+  </resource-bundle>
+ </application>
+</faces-config>

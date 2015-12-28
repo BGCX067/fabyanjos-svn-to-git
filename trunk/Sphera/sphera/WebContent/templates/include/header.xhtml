@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<ui:composition>
+	<h:form id="buscaForm">
+		<h:panelGrid columns="1">
+			
+				<h:panelGrid columns="2" dir="LTR">
+					<rich:togglePanel id="lang_choser" switchType="client"
+						stateOrder="a,b">
+						<f:facet name="a">
+							<rich:toggleControl for="lang_choser" value="idioma &#171;" />
+						</f:facet>
+						<f:facet name="b">
+							<h:panelGroup>
+								<h:commandLink action="#{idiomaController.change}">
+									<h:graphicImage value="/images/Brazil_Flag.jpg" />
+									<f:param name="language" value="pt"/>
+									<f:param name="country" value="BR"/>
+								</h:commandLink>
+								<h:commandLink action="#{idiomaController.change}">
+									<h:graphicImage value="/images/USA_Flag.jpg" />
+									<f:param name="language" value="en"/>
+								</h:commandLink>
+								<rich:toggleControl for="lang_choser" value="&#187; hide" />
+							</h:panelGroup>
+						</f:facet>
+					</rich:togglePanel>
+						<h:commandLink value="#{i18n.loggout}" action="#{usuarioController.logout}" />
+				</h:panelGrid>
+				${i18n.saudacao} ${user.nome}
+		</h:panelGrid>
+	</h:form>
+</ui:composition>
+</html>

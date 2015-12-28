@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Archiver-Version: Sphera
+Created-By: Alexandre Campelo
+Built-By: Alexandre Campelo
+Build-Jdk: 1.6.0_05
+

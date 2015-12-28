@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk">
+
+<body>      
+		
+
+<table cellpadding="4">
+	<tr>
+		<td>
+		<h:form>
+            <t:jscookMenu layout="hbr" theme="ThemeOffice" id="Cmenu">
+                <t:navigationMenuItem itemLabel="Home" id="niHome" action="menuHome"/>
+                <t:navigationMenuItem itemLabel="Cadastro Cliente" id="niCcl">
+                	    <t:navigationMenuItem itemLabel="Cadastro" action="menuCadastroCliente" id="niCadCli"/>
+	            </t:navigationMenuItem>
+                <t:navigationMenuItem itemLabel="Cadastro RM" id="niCadRM">
+		                <t:navigationMenuItem itemLabel="Cadastro" action="menuCadastroRM" id="niCadRMcad"/>
+	            </t:navigationMenuItem>
+                <t:navigationMenuItem itemLabel="Cadastro Campanha" id="nicadCam">
+		                <t:navigationMenuItem itemLabel="Cadastro" action="menuCadastroCampanha" id="nicadCampCad"/>
+	            </t:navigationMenuItem>
+                <t:navigationMenuItem itemLabel="Cadastro Visita" id="cv">
+		                <t:navigationMenuItem itemLabel="Cadastro" action="menuCadastroVisita" id="cdc"/>
+	            </t:navigationMenuItem>
+                <t:navigationMenuItem itemLabel="Relatorio" id="rel">
+		                <t:navigationMenuItem itemLabel="Relatorio de RM" action="cadastroVisita" id="relrm"/>
+		                <t:navigationMenuItem itemLabel="Relatorio de Clientes" action="cadastroVisita" id="relcdC"/>
+		                <t:navigationMenuItem itemLabel="Relatorio de Visitas" action="cadastroVisita" id="relcdv"/>
+	            </t:navigationMenuItem>
+            </t:jscookMenu>
+            </h:form>
+		</td>
+	</tr>
+</table>
+
+
+
+</body>
+
+</html>

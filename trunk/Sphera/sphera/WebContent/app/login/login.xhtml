@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.5)" />
+<meta http-equiv="Page-Exit" content="blendTrans(Duration=0.5)" />
+
+<title><ui:insert name="title" /></title>
+<link rel="STYLESHEET" type="text/css"
+	href="${facesContext.externalContext.requestContextPath}/css/common.css" />
+
+</head>
+<f:view locale="#{idiomaController.lingua}">
+	<h:form id="login">
+		<table align="center" border="0" style="width : 400px; height : 400px;">
+			<tr align="center" valign="middle">
+				<td align="center" valign="middle" width="100%" height="100%">
+					<rich:panel style="width: 250px; height: 130px;">
+						<f:facet name="header">
+							<h:outputText value="#{i18n.login}"/>
+						</f:facet>
+						
+						<h:panelGrid width="60%" columns="2" columnClasses="colunOne,colunTwo" >
+							<h:outputLabel value="#{i18n.lblLogin}" for="login" />
+							<h:inputText required="true"
+								value="#{usuarioController.usuario.login}" id="login"
+								label="#{i18n.lblLogin}" />
+			
+							<h:outputLabel rendered="#{usuarioController.creating}"
+								value="#{i18n.lblSenha}" for="senha" />
+							<h:inputSecret rendered="#{usuarioController.creating}"
+								required="true" value="#{usuarioController.usuario.senha}"
+								id="senha" label="#{i18n.lblSenha}">
+								<f:validateLength maximum="15" minimum="5" />
+							</h:inputSecret>
+							<a4j:outputPanel rendered="#{usuarioController.creating}"
+								ajaxRendered="true">
+								<h:outputText value=" "
+									rendered="#{empty facesContext.maximumSeverity.ordinal}" />
+							</a4j:outputPanel>
+							
+							<a4j:commandButton action="#{usuarioController.login}"
+								value="#{i18n.lblLogin}" style="width: 50px;"/>
+						</h:panelGrid>
+					</rich:panel>
+				</td>
+			</tr>
+		</table>
+	</h:form>
+</f:view>
+</html>

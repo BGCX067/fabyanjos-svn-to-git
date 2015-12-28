@@ -1,0 +1,561 @@
+/***
+ * master.css
+ * CSS padrao do projeto JHosp.
+ *
+ * Copyright (c) 2006 Japi Informatica.
+ */
+
+
+/************
+ *   LINK   *
+ ***********/
+
+
+A          {
+	color : #457162;
+	text-decoration: none;
+	font-family: Verdana;
+}
+A:Visited  {
+	color : #457162;
+	text-decoration: none;
+	font-family: Verdana;
+}
+A:Active   {
+	color : #457162;
+	text-decoration: none;
+	font-family: Verdana;
+}
+A:Hover    {
+	color : #457162;
+	text-decoration: underline;
+	font-family: Verdana;
+}
+
+
+
+
+A.Header   			{ color : #FFFFFF; text-decoration: underline; }
+A.Header:Visited 	{ color : #FFFFFF; text-decoration: underline; }
+A.Header:Active   	{ color : #FFFFFF; text-decoration: underline; }
+A.Header:Hover   	{ color : #FFFFFF; text-decoration: underline; }
+
+
+
+
+/*************
+ *   BODY    *
+ ************/
+
+BODY 	{
+	text-align					: center;
+	font-family					: Verdana;
+	font-size					: 10px;
+	scrollbar-face-color 		: #FFFFFF;
+	scrollbar-shadow-color 		: #2D428A;
+	scrollbar-highlight-color 	: #FFFFFF;
+	scrollbar-3dlight-color		: #2D428A;
+	scrollbar-darkshadow-color	: #FFFFFF;
+	scrollbar-track-color		: #FFFFFF;
+	scrollbar-arrow-color 		: #2D428A;
+	top: 18px;
+	padding-top: 18px;
+}
+
+/**************
+ *   FORMS  *
+ **************/
+
+.FIELD {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #457162;
+	height: 14px; /*alterado para adaptar ao tamanho*/
+	border: 1px solid #457162;
+	vertical-align: middle;
+	z-index: 3;
+}
+.BUTTON {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	background-color: #FFFFFF;
+	height: 17px;
+	border: 1px solid #457162;
+	color: #457162;
+	cursor: pointer;
+}
+.FONT {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+}
+.FONT BLACK {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #000000;
+}
+.FORM_BG {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+	background-color: #0071e1; /*aqui azul*/
+}
+.TableWhite {
+	border: 1px solid #FFFFFF;
+}
+.SCROLL_TABLE {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+	background-color: #69ac95;
+	overflow: auto;
+	width:300px;
+}
+
+.titulo_tabela {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #004080; /*aqui azul escuro*/
+	background-position: left center;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-left: 3px;
+	margin-left: 3px;
+}
+.field_transparent {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #69ac95;
+	background-position: left center;
+	font-weight: normal;
+	color: #FFFFFF;
+	padding-left: 3px;
+	margin-left: 3px;
+	border: thin none #69ac95;
+}
+
+.titulo_campos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	/*background-color: #004080; aqui azul escuro*/
+	background-position: left center;
+	/*font-weight: bold;*/
+	padding-left: 3px;
+	margin-left: 3px;
+}
+
+/** **************
+*   MENU LATERAL *
+**************** */
+.TEXTAREA {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #457162;
+	background-color: #FFFFFF;
+	border: 1px solid #457162;
+	vertical-align: middle;
+}
+.ML_TITULO {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #457162;
+	background-color: #FFFFFF;
+	border: 1px solid #457162;
+	vertical-align: bottom;
+	font-style: normal;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: normal;
+	text-align: center;
+	padding: 3;
+	cursor: default;
+}
+.ML_GERAL {
+	width: 163px;
+	font-family: Verdana;
+}
+.ML_ITEM {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #457162;
+	background-color: BDDFEF;
+	border: 1px solid #457162;
+	vertical-align: middle;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	text-align: left;
+	cursor: pointer;
+	border-bottom-color: 457162;
+	border-right-color: 457162;
+	border-top-color: 457162;
+	border-left-color: 457162;
+	padding: 3;
+	padding-left: 10px;
+}
+.ML_SUBITEM {
+
+	font-family: Verdana;
+	font-size: 10px;
+	color: #457162;
+	background-color: #BDDFEF;
+	border: 1px solid #457162;
+	vertical-align: middle;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	text-align: left;
+	cursor: pointer;
+	border-bottom-color: 457162;
+	border-right-color: 457162;
+	border-top-color: 457162;
+	border-left-color: 457162;
+	padding: 3;
+	padding-left: 15px;
+}
+.ML_BARRA {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #457162;
+	background-color: #FFFFFF;
+	border: 1px solid #457162;
+	vertical-align: bottom;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	text-align: left;
+	clear: right;
+	cursor: default;
+	width: 560px;
+	padding-left: 10px;
+}
+.ML_BACKGROUND {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #FFFFFF;
+	background-color: 69ac95;
+}
+.Barra_superior {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #457162;
+	background-color: #FFFFFF;
+	vertical-align: bottom;
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+	clear: right;
+	cursor: default;
+	width: 560px;
+	padding-left: 10px;
+	border: 1px solid #457162;
+}
+.Barra_superior_popup {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #457162;
+	background-color: #FFFFFF;
+	vertical-align: bottom;
+	font-style: normal;
+	font-weight: bold;
+	text-align: left;
+	clear: right;
+	cursor: default;
+	width: 100%;
+	padding-left: 10px;
+	border: 1px solid #457162;
+}
+.BUTTON_imagem {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	cursor: pointer;
+}
+
+
+
+/*
+Estilos usados no menu superior
+Serao removidos em breve
+*/
+.tdmenu{
+	border-top: #336699 solid 1px;
+	text-align: left;
+	cursor: pointer;
+	/*border: solid 1px;*/
+}
+
+.tableborder{
+	border:#336699 solid 1px;
+}
+/*
+Fim esilos usados no menu superior
+Serao removidos em breve
+*/
+
+
+*/
+
+#main_panel
+{
+ border:1px solid darkblue;
+ position:relative;
+ overflow:hidden;
+}
+.head_item
+{
+ background-color:#BDDFEF;
+ font:bold 10px Verdana;
+ border-top:1px solid darkblue;
+ border-bottom:1px solid darkblue;
+ position:absolute;
+ left:0px;
+ cursor:hand;
+ text-align:left;
+ text-decoration:none;
+}
+.item
+{
+ background-color:#D8ECF5;
+ font-family:Verdana;
+ font-size:10px;
+ left:0px;
+ position:relative;
+ text-align:left;
+}
+.item_panel
+{
+ position:absolute;
+ background-color:#D8ECF5;
+}
+.item_panel a
+{
+ text-decoration:none;
+ color:black;
+ font-size:10px;
+ cursor:hand;
+
+}
+.item1
+{
+ background-color:#CCEBFF;
+ font-family:verdana;
+ font-size:10px;
+ left:10px;
+ position:relative;
+ text-align:left;
+}
+.item2
+{
+ background-color:#D8EC92;
+ font-family:verdana;
+ font-size:10px;
+ left:15px;
+ position:relative;
+ text-align:left;
+}
+.item3
+{
+ background-color:#bcbcbc;
+ font-family:verdana;
+ font-size:10px;
+ left:20px;
+ position:relative;
+ text-align:left;
+}
+.item4
+{
+ background-color:#bcaaae;
+ font-family:verdana;
+ font-size:10px;
+ left:25px;
+ position:relative;
+ text-align:left;
+}
+.hitem1
+{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 10px;
+background-color:#BDDFEF;
+background-position: left center;
+font-weight: bold;
+color: #457162;
+padding-left: 3px;
+margin-left: 3px;
+}
+.hitem2
+{
+ background-color:#dccade;
+ font:bold 10px Arial;
+ position:relative;
+ left:10px;
+ cursor:hand;
+ text-align:left;
+ text-decoration:none;
+}
+.hitem3
+{
+ background-color:#BDDFEF;
+ font:bold 10px Arial;
+ position:relative;
+ left:10px;
+ cursor:hand;
+ text-align:left;
+ text-decoration:none;
+}
+.hitem4
+{
+ background-color:#BDDFEF;
+ font:bold 10px Arial;
+ position:relative;
+ left:10px;
+ cursor:hand;
+ text-align:left;
+ text-decoration:none;
+}
+.Barra_superior_erro {
+	font-family: Verdana;
+	font-size: 10px;
+	color: #FF0000;
+	background-color: #FFFFFF;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+	text-align: center;
+	cursor: default;
+	width: 555px;
+	padding: 3;
+	border-top-color: #FF0000;
+	border-right-color: #FF0000;
+	border-bottom-color: #FF0000;
+	border-left-color: #FF0000;
+	border-color: #FF0000;
+	border-left-style: solid;
+	border-bottom-style: solid;
+	border-right-style: solid;
+	border-top-style: solid;
+	border-width: 1px;
+}
+.BUTTONfixed {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	background-color: #FFFFFF;
+	height: 17px;
+	border: 1px solid #457162;
+	color: #457162;
+	cursor: pointer;
+	width: 60px;
+}
+
+select {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #457162;
+	height: 18px;
+	background-color: #FFFFFF;
+	border: 1px solid #3a5e52;
+	vertical-align: middle;
+	z-index: 3;
+	max-width:250px;
+
+}
+.select_sexo {
+	max-width:105px;
+	width:105px;
+}
+
+.select_municipio_domicilio {
+	max-width:250px;
+	width:250px;
+}
+
+.select_uf {
+	max-width:50px;
+	width:50px;
+}
+
+.codigo_orgao_emissor {
+	max-width:105px;
+	width:105px;
+}
+
+.codigo_tipo_certidao {
+	max-width:170px;
+	width:170px;
+}
+
+.select_pais_origem {
+	max-width:250px;
+	width:250px;
+}
+
+.link_padrao {
+	color : #FFFFFF;
+	text-decoration: underline;
+	font-family: Verdana;
+	cursor:pointer;
+}
+
+
+/********************************
+ *   Especiais para DataTable   *
+ ********************************/
+.EDIT_BACKGROUND {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #457162;
+	background-color: #FFFFFF;
+	border-style: dotted;
+	border-width: thin;
+	border-collapse: separate;
+	table-layout: inherit;
+	border: thin;
+}
+.LINHA_1_TAB {
+	background-color: #8dcfb8;
+}
+.LINHA_2_TAB {
+	background-color: #69ac95;
+}
+.linha1 {
+
+font-family: Arial, Helvetica, sans-serif;
+
+font-size: 12px;
+
+color: black;
+
+background-color: beige;
+
+text-indent: 11px;
+
+}
+
+.linha2 {
+
+font-family: Arial, Helvetica, sans-serif;
+
+font-size: 12px;
+
+color: black;
+
+background-color: #E1ECF7;
+
+text-indent: 11px;
+
+}
+.cabecalho {
+
+   font-family: Arial, Helvetica, sans-serif;
+
+   font-weight: bold;
+
+   font-size: 14px;
+
+   color: white;
+
+   background-color: #3D77C0;
+
+   text-align: center;
+
+}

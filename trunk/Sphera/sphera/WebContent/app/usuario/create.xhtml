@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sphera="http://org.sphera/mytags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+	<a4j:region id="regUser" selfRendered="false" renderRegionOnly="true">
+		<h:form id="user">
+			<h:inputHidden value="#{usuarioController.usuario.id}"/>
+		
+			<h:panelGrid  width="70%" columns="3" columnClasses="colunOne,colunTwo,colunThree" id="fields">
+				<h:outputLabel value="#{i18n.lblNome}" for="nome" />
+				<h:inputText value="#{usuarioController.usuario.nome}" id="nome" label="#{i18n.lblNome}" required="true"/>
+				<sphera:message validID="nome"/>
+			
+				<h:outputLabel value="#{i18n.lblLogin}" for="login" />
+				<h:inputText required="true" value="#{usuarioController.usuario.login}" id="login" label="#{i18n.lblLogin}" />
+				<sphera:message validID="login"/>
+				
+				<h:outputLabel rendered="#{usuarioController.creating}" value="#{i18n.lblSenha}" for="senha" />
+				<h:inputSecret rendered="#{usuarioController.creating}" required="true" value="#{usuarioController.usuario.senha}" id="senha" label="#{i18n.lblSenha}" > 
+					<f:validateLength maximum="15" minimum="5"/>
+				</h:inputSecret>
+					
+				<a4j:outputPanel rendered="#{usuarioController.creating}" ajaxRendered="true">
+					<h:outputText value=" " rendered="#{empty facesContext.maximumSeverity.ordinal}" />
+					<rich:message for="senha">
+						<f:facet name="errorMarker">
+							<h:graphicImage value="/images/error.gif" />
+						</f:facet>
+					</rich:message>
+				</a4j:outputPanel>
+					
+				<h:outputLabel rendered="#{usuarioController.creating}"  value="#{i18n.lblConfSenha}" for="senhaConf" />
+				<h:inputSecret rendered="#{usuarioController.creating}"  required="true" value="#{usuarioController.confirmSenha}" id="senhaConf" label="#{i18n.lblConfSenha}" >
+					<f:validateLength maximum="15" minimum="5"/>	
+				</h:inputSecret>
+				<a4j:outputPanel rendered="#{usuarioController.creating}" ajaxRendered="true">
+					<h:outputText value=" " rendered="#{empty facesContext.maximumSeverity.ordinal}" />
+					<rich:message for="senhaConf">
+						<f:facet name="errorMarker">
+							<h:graphicImage value="/images/error.gif" />
+						</f:facet>
+					</rich:message>
+				</a4j:outputPanel>
+				
+				<h:outputLabel value="#{i18n.lblDept}" for="dpt" />
+				<h:selectOneMenu label="#{i18n.lblDept}" value="#{usuarioController.usuario.departamento}" id="dpt" >
+					<f:selectItems value="#{departamentoController.comboList}"/>
+					<f:converter converterId="deptConvert"/>
+				</h:selectOneMenu>
+				<sphera:message validID="dpt"/>
+				
+				<h:outputLabel value="#{i18n.lblCargo}" for="cargo" />
+				<h:selectOneMenu label="#{i18n.lblCargo}" value="#{usuarioController.usuario.cargo}" id="cargo">
+					<f:selectItems value="#{cargoController.comboList}"/>
+					<f:converter converterId="cargoConvert"/>
+				</h:selectOneMenu>
+				<sphera:message validID="cargo"/>
+				
+				<h:outputLabel value="#{i18n.lblPerfil}" for="perfil"/>
+				<h:selectManyListbox size="3" id="perfil" value="#{usuarioController.usuario.perfis}" required="true">
+					<f:selectItems value="#{perfilController.comboList}"/>
+				</h:selectManyListbox>
+				<sphera:message validID="perfil"/>
+				
+				<h:outputLabel value="#{i18n.lblCusto}" for="custo" />
+				<h:inputText  required="true" value="#{usuarioController.usuario.custoHora}" id="custo" label="#{i18n.lblCusto}" />
+				<sphera:message validID="custo"/>
+				
+				<h:outputLabel value="#{i18n.lblEmail}" for="email" />
+				<h:inputText  required="true" value="#{usuarioController.usuario.email}" id="email" label="#{i18n.lblEmail}" >
+					<f:validator validatorId="emailValid"/>
+				</h:inputText>
+				<sphera:message validID="email"/>
+				
+				<h:outputLabel value="#{i18n.lblTel}" for="tel" />
+				<h:inputText value="#{usuarioController.usuario.telefone}" id="tel" label="#{i18n.lblTel}" />
+				<sphera:message validID="tel"/>				
+			</h:panelGrid>
+				<h:inputHidden value="#{usuarioController.name}"  />
+			<h:panelGrid columns="2">
+				<a4j:commandButton action="#{usuarioController.save}" value="#{i18n.save}" />
+				<h:commandButton action="usuarios" value="#{i18n.cancel}" immediate="true"/>
+			</h:panelGrid>
+		</h:form>
+</a4j:region>
+</ui:composition>

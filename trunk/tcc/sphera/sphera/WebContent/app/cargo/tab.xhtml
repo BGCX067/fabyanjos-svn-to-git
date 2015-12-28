@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sphera="http://org.sphera/mytags">
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="pageTitle">
+		<h3><h:outputText value="#{i18n.lblCargo}"/></h3>
+	</ui:define>
+	<ui:define name="body">
+		
+		<rich:tabPanel id="tabPanel" switchType="ajax" height="400px;"
+			width="600px;" selectedTab="#{cargoController.selectedTab}"  ontabchange="showLoad();">
+			<rich:tab label="Listar" id="tabList" action="#{cargoController.goToList}"  oncomplete="hideLoad();">
+				<ui:include src="list.xhtml" />
+			</rich:tab>
+			<rich:tab label="Criar" id="tabCreate" action="#{cargoController.cleanFields}" oncomplete="hideLoad();">
+				<ui:include src="create.xhtml" />
+			</rich:tab>
+		</rich:tabPanel>
+		<rich:modalPanel id="view" width="300" height="50" styleClass="center">
+			<f:facet name="header">
+				<h:outputText value="#{i18n.cargo}"/>
+			</f:facet>
+			<f:facet name="controls">
+				<h:graphicImage value="/images/close.png" style="cursor:pointer"
+				onclick="#{rich:component('view')}.hide()" />
+			</f:facet>
+			<div align="center"><ui:include src="view.xhtml" /></div>
+		</rich:modalPanel>
+	</ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,12 @@
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces-xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.com/prettyfaces-xsd
+			http://ocpsoft.com/xml/ns/prettyfaces/pretty-1.0.xsd">
+
+	<url-mapping id="comment">
+		<pattern>/home</pattern>
+		<view-id>/pages/home.jsf</view-id>
+		<action>#{homeBean.load}</action>
+	</url-mapping>
+
+</pretty-config>

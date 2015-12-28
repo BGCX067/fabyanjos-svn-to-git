@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:sphera="http://org.sphera/mytags">
+		
+<ui:composition>
+		
+		<a4j:region>
+		<a4j:form id="proj" > 
+			<h:inputHidden value="#{projetoController.projeto.id}"/>
+			<h:panelGrid width="70%" columns="3" columnClasses="colunOne,colunTwo,colunThree" >
+				<h:outputLabel value="#{i18n.lblNome}" for="nome"/>
+				<h:inputText required="true" id="nome" value="#{projetoController.projeto.nome}" label="#{i18n.lblNome}"/>
+				<sphera:message validID="nome"/>
+				
+				<h:outputLabel for="elm1" value="#{i18n.lblDescr}"/>
+				<a4j:outputPanel layout="block" id="panel" >
+					<h:inputTextarea value="#{projetoController.projeto.descricao}" id="elm1" cols="50" rows="20" label="#{i18n.lblDescr}">
+						
+					</h:inputTextarea>
+				</a4j:outputPanel>
+				<sphera:message validID="elm1"/>
+				
+				<h:outputLabel value="#{i18n.lblIniPlanejado}" for="dtIni"/>
+				<rich:calendar value="#{projetoController.projeto.inicioPlanejado}" id="dtIni" datePattern="#{i18n.datePattern}" locale="#{i18n.locale}" mode="client" popup="true" required="true" showApplyButton="false" />
+				<sphera:message validID="dtIni"/>
+				
+				<h:outputLabel value="#{i18n.lblFimPlanejado}" for="dtFim"/>
+				<rich:calendar value="#{projetoController.projeto.fimPlanejado}" id="dtFim" datePattern="#{i18n.datePattern}" locale="#{i18n.locale}" mode="client" popup="true" required="true" showApplyButton="false" />
+				<sphera:message validID="dtFim"/>
+				
+				<h:outputLabel value="#{i18n.lblCustoPlanejadoRH}" for="custoRH"/>
+				<h:inputText label="#{i18n.lblCustoPlanejadoRH}" value="#{projetoController.projeto.custoPlanejadoRH}" id="custoRH" required="true">
+					
+				</h:inputText>
+				<sphera:message validID="custoRH"/>
+				
+				<h:outputLabel value="#{i18n.lblCustoPlanejadoMaterial}" for="custoMat"/>
+				<h:inputText label="#{i18n.lblCustoPlanejadoMaterial}" value="#{projetoController.projeto.custoPlanejadoMaterial}" id="custoMat">
+					
+				</h:inputText>
+				<sphera:message validID="custoMat"/>
+				
+				<h:outputLabel value="#{i18n.lblResponsavel}" for="resp"/>
+				<h:panelGroup layout="block">
+					<h:inputText value="#{projetoController.projeto.responsavel}" id="resp" required="true">
+						<f:converter converterId="userConvert"/>
+					</h:inputText>
+					<rich:suggestionbox id="suggestResp"
+					 height="150" width="220" for="resp" border="1" shadowDepth="4" shadowOpacity="4"
+					 cellpadding="2" var="result" suggestionAction="#{usuarioController.autocomplete}"
+					 nothingLabel="#{i18n.noUsersFound}" fetchValue="#{result.nome} (#{result.login})"
+					 >
+					<h:column>
+						<h:outputText value="#{result.nome} -"/>
+					</h:column>	
+					<h:column>
+						<h:outputText value=" #{result.login} -"/>
+					</h:column>
+					<h:column>
+						<h:outputText value=" #{result.cargo}"/>
+					</h:column>
+					</rich:suggestionbox>
+				</h:panelGroup>
+				<sphera:message validID="resp"/>
+				
+				<h:outputLabel value="#{i18n.lblCliente}" for="client"/>
+				<h:selectOneMenu required="true" value="#{projetoController.projeto.cliente}" id="client" label="#{i18n.lblCliente}">
+					<f:selectItem itemLabel="#{i18n.select}"/>
+					<f:selectItems value="#{clienteController.comboList}"/>
+					<f:converter converterId="clientConvert"/>
+				</h:selectOneMenu>
+				<sphera:message validID="client"/> 
+			</h:panelGrid>
+
+			
+			<h:outputText id="filelbl" value="#{i18n.lblProjFile}"/>
+			<rich:fileUpload fileUploadListener="#{projetoController.listener}"
+			id="upload" acceptedTypes="#{configBean.acceptedFiles}"	stopControlLabel="#{i18n.uploadStopControlLabel}"
+			transferErrorLabel="#{i18n.uploadTransferErrorLabel}" clearControlLabel="#{i18n.uploadClearControlLabel}"
+			cancelEntryControlLabel="#{i18n.uploadCancelEntryControlLabel}" addControlLabel="#{i18n.uploadAddControlLabel}"
+			stopEntryControlLabel="#{i18n.uploadStopControlLabel}" sizeErrorLabel="#{i18n.ulploadSizeErrorLabel}"
+			progressLabel="#{i18n.uploadProgressLabel}" maxFilesQuantity="5" doneLabel="#{i18n.uploadDoneLabel}"
+			clearAllControlLabel="#{i18n.uploadClearAllControlLabel}">
+			
+			</rich:fileUpload>
+			<h:panelGrid columns="2">
+				<a4j:commandButton action="#{projetoController.save}" value="#{i18n.save}" onclick="showLoad();" oncomplete="hideLoad();" reRender="tabPanel,message"/>
+				<a4j:commandButton action="#{projetoController.goToList}" immediate="true" value="#{i18n.cancel}" onclick="showLoad();" oncomplete="hideLoad();" reRender="tabPanel,message"/>
+			</h:panelGrid>
+		</a4j:form>
+		</a4j:region>
+</ui:composition>
+</html>

@@ -1,0 +1,14 @@
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+		<h:panelGrid columns="2" columnClasses="col-aling-lef" width="100%">
+			<h:outputText id="lblNome" value="#{i18n.lblNome}" />
+			<h:outputText id="name" value="#{perfilController.perfil.nome}"/>
+			<h:outputText rendered="#{not empty perfilController.perfil.descricao}" value="#{i18n.lblDescricao}" id="lblDept"/>
+			<h:outputText rendered="#{not empty perfilController.perfil.descricao}" id="dept" value="#{perfilController.perfil.descricao}"/>
+		</h:panelGrid>
+</ui:composition>

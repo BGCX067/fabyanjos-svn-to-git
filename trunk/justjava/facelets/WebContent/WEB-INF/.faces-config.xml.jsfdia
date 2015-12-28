@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS ENTITY="JSFProcess">
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#pages#login.xhtml"
+  PATH="/pages/login.xhtml" SHAPE="115,97,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules:#pages#login.xhtml:0"
+   NAME="item" PATH="/pages/login.xhtml">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="usuario::#pages#home.xhtml" NAME="output"
+    PATH="/pages/home.xhtml" TARGET="rules:#pages#home.xhtml" TITLE="usuario"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:#pages#home.xhtml"
+  PATH="/pages/home.xhtml" SHAPE="416,88,50,25" persistent="true"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup" NAME="rules:" SHAPE="153,259,0,0">
+  <PROCESS-ITEM ENTITY="JSFProcessItem" ID="rules::0" NAME="item">
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="menuCadastroCampanha::#pages#cadastroCampanha.xhtml"
+    NAME="output" PATH="/pages/cadastroCampanha.xhtml"
+    TARGET="rules:#pages#cadastroCampanha.xhtml" TITLE="menuCadastroCampanha"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="menuCadastroCliente::#pages#cadastroCliente.xhtml"
+    NAME="output1" PATH="/pages/cadastroCliente.xhtml"
+    TARGET="rules:#pages#cadastroCliente.xhtml" TITLE="menuCadastroCliente"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="menuCadastroRM::#pages#cadastroRM.xhtml" NAME="output2"
+    PATH="/pages/cadastroRM.xhtml"
+    TARGET="rules:#pages#cadastroRM.xhtml" TITLE="menuCadastroRM"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="menuCadastroVisita::#pages#cadastroVisita.xhtml" NAME="output3"
+    PATH="/pages/cadastroVisita.xhtml"
+    TARGET="rules:#pages#cadastroVisita.xhtml" TITLE="menuCadastroVisita"/>
+   <PROCESS-ITEM-OUTPUT ENTITY="JSFProcessItemOutput"
+    ID="menuHome::#pages#home.xhtml" NAME="output4"
+    PATH="/pages/home.xhtml" TARGET="rules:#pages#home.xhtml" TITLE="menuHome"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#cadastroCampanha.xhtml"
+  PATH="/pages/cadastroCampanha.xhtml" SHAPE="429,254,0,0" persistent="true"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#cadastroCliente.xhtml"
+  PATH="/pages/cadastroCliente.xhtml" SHAPE="454,366,0,0" persistent="true"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#cadastrodados.xhtml"
+  PATH="/pages/cadastrodados.xhtml" SHAPE="128,512,50,25" persistent="true"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#cadastroRM.xhtml" PATH="/pages/cadastroRM.xhtml"
+  SHAPE="448,524,0,0" persistent="true"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#cadastroUsuario.xhtml"
+  PATH="/pages/cadastroUsuario.xhtml" SHAPE="120,624,50,25" persistent="true"/>
+ <PROCESS-ITEM ENTITY="JSFProcessGroup"
+  NAME="rules:#pages#cadastroVisita.xhtml"
+  PATH="/pages/cadastroVisita.xhtml" SHAPE="405,680,0,0" persistent="true"/>
+</PROCESS>

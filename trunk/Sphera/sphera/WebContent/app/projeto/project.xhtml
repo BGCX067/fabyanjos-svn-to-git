@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="body">
+		<h3><h:outputText value="#{i18n.project}"/></h3>
+	<h:panelGrid columns="2" columnClasses="proj-colOne,proj-colTwo" width="70%">
+		<h:outputText styleClass="bold" id="lblNome" value="#{i18n.lblNome}" />
+		<h:outputText id="name" value="#{projetoController.projeto.nome}" />
+		<h:outputText styleClass="bold" id="lblDescr" value="#{i18n.lblDescr}" />
+		<h:outputText value="#{projetoController.projeto.descricao}" id="descr" escape="true"/>
+		<h:outputText styleClass="bold" value="#{i18n.lblIniPlanejado}" id="lblIniPla"/>
+		<h:outputText id="iniPla" value="#{projetoController.projeto.inicioPlanejado}">
+			<f:convertDateTime pattern="#{i18n.datePattern}"/>
+		</h:outputText>
+		<h:outputText styleClass="bold" id="lblFimPla" value="#{i18n.lblFimPlanejado}"/>
+		<h:outputText id="fimPla" value="#{projetoController.projeto.fimPlanejado}">
+			<f:convertDateTime pattern="#{i18n.datePattern}"/>
+		</h:outputText>
+		<h:outputText value="#{i18n.lblCustoTotalPlan}" styleClass="bold" id="lblCustPTot"/>
+		<h:outputText id="custoTotal" value="#{projetoController.projeto.custoPlanejadoTotal}">
+			<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+		</h:outputText>
+		<h:outputText styleClass="bold" id="custRH" value="#{i18n.lblCustoPlanejadoRH}"/>
+		<h:outputText id="cusrRHValue" value="#{projetoController.projeto.custoPlanejadoRH}">
+			<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+		</h:outputText>
+		<h:outputText styleClass="bold" id="custMat" value="#{i18n.lblCustoPlanejadoMaterial}"/>
+		<h:outputText id="custMatValue" value="#{projetoController.projeto.custoPlanejadoMaterial}">
+			<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+		</h:outputText>
+		<h:outputText id="lblStatus" value="#{i18n.lblStatus}" styleClass="bold"/>
+		<h:outputText id="stat1" value="#{i18n['aguardando']}" rendered="#{projetoController.projeto.status eq 'AGUARDANDO'}"/>
+		<h:outputText id="stat2" value="#{i18n['concluido']}" rendered="#{projetoController.projeto.status eq 'CONCLUIDO'}"/>
+		<h:outputText id="stat3" value="#{i18n['inprogress']}" rendered="#{projetoController.projeto.status eq 'INPROGRESS'}"/>
+		<h:outputText id="lblCliente" styleClass="bold" value="#{i18n.client}"/>
+		<h:outputText id="cliente" value="#{projetoController.projeto.cliente.nome}"/>
+		<h:outputText styleClass="bold" id="lblReps" value="#{i18n.lblResponsavel}"/>
+		<h:outputText value="#{projetoController.projeto.responsavel.nome}" id="reps"/>
+	</h:panelGrid>
+	<rich:panelBar width="70%" height="400">
+		<rich:panelBarItem label="#{i18n.lblProjFile}">
+			<h:panelGrid columns="5" columnClasses="arquivos-panel" >
+					<h:panelGrid styleClass="arquivo" columnClasses="arquivos-panel">
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/DocumentoTCC_v0.3.1.doc">
+						<h:graphicImage value="/images/img_doc.gif"/>
+						</h:outputLink>
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/DocumentoTCC_v0.3.1.doc">
+						<h:outputText value="Documento TCC_v0.3.1.doc"/>
+						</h:outputLink>
+					</h:panelGrid>
+					<h:panelGrid styleClass="arquivo" columnClasses="arquivos-panel">
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/Programacao_de_Apresentacao_de_TCC.pdf">	
+							<h:graphicImage value="/images/img_pdf.gif"/>
+							</h:outputLink>
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/Programacao_de_Apresentacao_de_TCC.pdf">
+							<h:outputText value="Programacao de Apresentacao de TCC.pdf"/>
+						</h:outputLink>
+					</h:panelGrid>
+					<h:panelGrid styleClass="arquivo" columnClasses="arquivos-panel">
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/TCC_1_Defesa_Simulada.ppt">
+							<h:graphicImage value="/images/img_ppt.gif"/>
+						</h:outputLink>
+						<h:outputLink value="${facesContext.externalContext.requestContextPath}/download/TCC_1_Defesa_Simulada.ppt">	
+							<h:outputText value="TCC 1 Defesa Simulada.ppt"/>
+						</h:outputLink>
+					</h:panelGrid>
+			</h:panelGrid>
+		</rich:panelBarItem>
+		<rich:panelBarItem label="#{i18n.wbs}">
+			<h:form id="act">
+				<a4j:keepAlive beanName="projetoController"/>
+				<h:commandLink value="#{i18n.addFase}" action="#{faseController.novaFase}">
+					<f:setPropertyActionListener value="#{projetoController.projeto}" target="#{faseController.fase.projeto}" />
+				</h:commandLink>
+			</h:form>
+		</rich:panelBarItem>
+		<rich:panelBarItem label="#{i18n.ganttChart}">
+			<h:outputText value="#{i18n.ganttChart}"/>
+		</rich:panelBarItem>
+	</rich:panelBar>
+	
+</ui:define>
+</ui:composition>
+
+</html>

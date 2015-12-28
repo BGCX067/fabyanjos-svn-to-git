@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/pages/template/common.xhtml">
+      <ui:define name="pageHeader">Cadastro de Dados</ui:define>
+      <ui:define name="body">
+      	<f:view>
+			<t:panelTabbedPane align="center"  bgcolor="0071e1" styleClass="titulo_campos" width="30%">
+				<t:panelTab label="Cadastro de Dados" styleClass="titulo_campos">
+								<h:form>
+								<t:panelGrid align="center" columns="2">
+									<h:outputText value="Data Atual:" styleClass="titulo_campos"/> <t:inputCalendar  renderAsPopup="true"/>
+									<h:outputText value="Cliente Origem:" styleClass="titulo_campos"/> <h:inputText value="#{acaoCadastroDados.clienteOrigem}"required="true"/>
+									<h:outputText value="Cidade Origem:" styleClass="titulo_campos"/> <h:inputText value="#{acaoCadastroDados.cidadeOrigem}"required="true"/>
+									<h:outputText value="Cliente Destino:" styleClass="titulo_campos"/> <h:inputText value="#{acaoCadastroDados.clienteDestino}"required="true"/>
+									<h:outputText value="Cidade Destino:" styleClass="titulo_campos"/> <h:inputText value="#{acaoCadastroDados.cidadeDestino}"required="true"/>
+									<h:outputText value="Data Saída:" styleClass="titulo_campos"/> <t:inputCalendar  renderAsPopup="true"/>
+									<h:outputText value="Hora Saída:" styleClass="titulo_campos"/> <t:inputCalendar  renderAsPopup="true"/>
+									<h:outputText value="Crítico:" styleClass="titulo_campos"/> <h:selectBooleanCheckbox title="Crítico" value="#{acaoCadastroDados.critico}"/>
+									<h:outputText value="Data Programada:" styleClass="titulo_campos"/> <t:inputCalendar  renderAsPopup="true"/>
+									<h:outputText value="Hora Programada:" styleClass="titulo_campos"/> <t:inputCalendar  renderAsPopup="true"/>
+									<h:outputText value="Embarcador:" styleClass="titulo_campos"/> <h:inputText value="#{acaoCadastroDados.embarcador}"required="true"/>
+									<h:outputText value="Situação:" styleClass="titulo_campos"/> <h:inputText value="#{acaoCadastroDados.situacao}"required="true"/>
+									<h:outputText value="Atraso:" styleClass="titulo_campos"/> <h:selectBooleanCheckbox title="Atraso" value="#{acaoCadastroDados.atraso}"/>
+									<h:outputText value="Observação:" styleClass="titulo_campos"/> <h:inputTextarea value="#{acaoCadastroDados.observacao}" required="true"/>
+									<h:outputText value="Status:" styleClass="titulo_campos"/> <h:selectBooleanCheckbox title="Status" value="#{acaoCadastroDados.status}"/>
+									<h:commandButton styleClass="BUTTON_imagem" value="Gravar" action="#{dadosHandler.salvar}"/>
+								</t:panelGrid>
+								</h:form>
+								
+				</t:panelTab>
+				<t:panelTab label="Dados Cadastrados">
+								<h:form>
+					<t:panelGrid>
+										<h:dataTable value="#{dadosHandler.dados}" id="tabelaDados" rows="5" var="d" 
+										styleClass="EDIT_BACKGROUND" headerClass="cabecalho"  rowClasses="linha1,linha2" >
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="ID"/>
+												</f:facet>
+												<h:outputText value="#{d.id}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Data Atual"/>
+												</f:facet>
+												<h:outputText value="#{d.dataAtual}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Cliente Origem"/>
+												</f:facet>
+												<h:outputText value="#{d.clienteOrigem}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Cidade Origem"/>
+												</f:facet>
+												<h:outputText value="#{d.cidadeOrigem}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Cliente Destino"/>
+												</f:facet>
+												<h:outputText value="#{d.clienteDestino}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Cidade Destino"/>
+												</f:facet>
+												<h:outputText value="#{d.cidadeDestino}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Data Saída"/>
+												</f:facet>
+												<h:outputText value="#{d.dataSaida}"/>
+											</h:column><h:column>
+												<f:facet name="header">
+													<h:outputText value="Hora Saída"/>
+												</f:facet>
+												<h:outputText value="#{d.horaSaida}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Crítico"/>
+												</f:facet>
+												<h:outputText value="#{d.critico}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Data Programada"/>
+												</f:facet>
+												<h:outputText value="#{d.dataProgramada}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Hora Programada"/>
+												</f:facet>
+												<h:outputText value="#{d.horaProgramada}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Embarcador"/>
+												</f:facet>
+												<h:outputText value="#{d.embarcador}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Situação"/>
+												</f:facet>
+												<h:outputText value="#{d.situacao}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Atraso"/>
+												</f:facet>
+												<h:outputText value="#{d.atraso}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Observação"/>
+												</f:facet>
+												<h:outputText value="#{d.observacao}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Status"/>
+												</f:facet>
+												<h:outputText value="#{d.status}"/>
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Alteração"/>
+												</f:facet>
+												<h:commandLink actionListener="#{dadosHandler.carregaDados}">
+													<h:outputText value="Alterar"/>
+													<f:param id="editId" name="id" value="#{d.id}"/>
+												</h:commandLink>
+											</h:column>
+										</h:dataTable>
+										<t:dataScroller for="tabelaDados" paginator="true" paginatorMaxPages="7"></t:dataScroller>
+								
+					</t:panelGrid>
+					</h:form>
+				</t:panelTab>
+			</t:panelTabbedPane>
+		</f:view>
+      </ui:define>
+</ui:composition>

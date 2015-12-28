@@ -1,0 +1,83 @@
+<!DOCTYPE html 
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      template="/pages/template/common.xhtml">
+
+	<ui:define name="body">
+		<div jsfc="h:form">
+	      <table>
+	      	<tbody>
+	      		<tr>
+	      			<td align="right" class="label">
+	      				#{lbl.nome}: 
+	      			</td>
+	      			<td align="left">
+	      				<input type="text" jsfc="h:inputText" 
+	      					value="#{contato.contato.nome}" id="nome" 
+	      					required="true" requiredMessage="#{error.required}" 
+	      					class="input" size="20" />
+	      			</td>
+	      			<td align="left" class="error">
+	      				<label jsfc="h:message" for="nome"/>
+	      			</td>
+	      		</tr>
+	      		<tr>
+	      			<td align="right" class="label">
+	      				#{lbl.nick}: 
+	      			</td>
+	      			<td align="left">
+	      				<input type="text" jsfc="h:inputText" 
+	      					value="#{contato.contato.nick}" id="nick" 
+	      					required="true" requiredMessage="#{error.required}" class="input" size="20"/>
+	      			</td>
+	      			<td align="left" class="error">
+	      				<label jsfc="h:message" for="nick"/>
+	      			</td>
+	      		</tr>
+	      		<tr>
+	      			<td align="right" class="label">
+	      				#{lbl.email}: 
+	      			</td>
+	      			<td align="left">
+	      				<input type="text" jsfc="h:inputText" 
+	      					value="#{contato.contato.email}" id="email" 
+	      					required="true" requiredMessage="#{error.required}" class="input" size="20"/>
+	      			</td>
+	      			<td align="left" class="error">
+	      				<label jsfc="h:message" for="email"/>
+	      			</td>
+	      		</tr>
+	      		
+	      		<tr>
+	      			<td align="right" class="label">
+	      				#{lbl.fone}: 
+	      			</td>
+	      			<td align="left">
+	      				<input type="text" jsfc="h:inputText" 
+	      					value="#{contato.contato.ddd}" id="ddd" 
+	      					required="true" requiredMessage="#{error.required}" class="input" size="2" maxlength="2"/>&nbsp;&nbsp;&nbsp;
+	      				<label jsfc="h:message" for="ddd"/>&nbsp;&nbsp;&nbsp;
+	      				<input type="text" jsfc="h:inputText" 
+	      					value="#{contato.contato.telefone}" id="fone" 
+	      					required="true" requiredMessage="#{error.required}" class="input" size="8" maxlength="8"/>
+	      			</td>
+	      			<td align="left" class="error">
+	      				<label jsfc="h:message" for="fone"/>
+	      			</td>
+	      		</tr>
+	      		<tr>
+	      			<td colspan="2" align="right">
+	      				<input type="submit" jsfc="h:commandButton" value="Cadastrar" action="#{contato.save}" class="button"/> 
+	      			</td>
+	      		</tr>
+	      	</tbody>
+	      </table>
+	    </div>
+	</ui:define>
+
+</ui:composition>

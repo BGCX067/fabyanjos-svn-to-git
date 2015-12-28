@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:sphera="http://org.sphera/mytags">
+
+<a4j:region id="regCgo" selfRendered="false" renderRegionOnly="true">
+	<h:form id="perfil">
+		<h:panelGrid  width="70%" columns="3" columnClasses="colunOne,colunTwo,colunThree" id="fields">
+			
+			<h:outputLabel value="#{i18n.lblNome}" for="nome"/>
+			<h:inputText id="nome" value="#{perfilController.perfil.nome}" size="45"/>
+			<sphera:message validID="nome"/>
+			
+			<h:outputLabel value="#{i18n.lblAcessos}" for="acesso"/>
+			<h:selectManyListbox size="5" id="acesso" value="#{perfilController.perfil.acessos}" required="true">
+				<f:selectItems value="#{acessoController.comboList}"/>
+			</h:selectManyListbox>
+			<sphera:message validID="acesso"/>
+			
+			<h:outputLabel value="#{i18n.lblDescricao}" for="descricao"/>
+			<h:inputTextarea id="descricao" value="#{perfilController.perfil.descricao}" rows="5" cols="45"/>
+			<sphera:message validID="descricao"/>
+			
+		</h:panelGrid>
+
+		<h:panelGrid columns="2">
+			<a4j:commandButton action="#{perfilController.save}" value="#{i18n.save}" />
+			<h:commandButton action="perfil" value="#{i18n.cancel}" immediate="true"/>
+		</h:panelGrid>
+	</h:form>
+</a4j:region>
+</html>

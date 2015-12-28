@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/pages/template/common.xhtml">
+      <ui:define name="pageHeader">Cadastro de Cliente</ui:define>
+       <ui:define name="body">
+       	<f:view>
+			<h:form>
+				<t:panelGrid align="center" columns="2" >
+					<h:outputText value="Nome:" styleClass="titulo_campos"/> <h:inputText value="#{clienteHandler.cadastroCliente.nomeCliente}" required="true"/>
+					<h:outputText value="CNPJ:" styleClass="titulo_campos"/> <h:inputText value="#{clienteHandler.cadastroCliente.cnpj}" required="true"/>
+					<h:outputText value="Endereço:" styleClass="titulo_campos"/> <h:inputText value="#{clienteHandler.cadastroCliente.endereco}" required="true"/>
+					<h:outputText value="Telefone:" styleClass="titulo_campos"/> <h:inputText value="#{clienteHandler.cadastroCliente.telefone}"/>
+					<h:outputText value="E-mail:" styleClass="titulo_campos"/> <h:inputText value="#{clienteHandler.cadastroCliente.email}"/>
+					<!-- Mostra as msgs de erro-->
+					<h:messages></h:messages>
+					<h:commandButton styleClass="BUTTON_imagem" value="Gravar" action="#{clienteHandler.salvar}"/>
+				</t:panelGrid>
+			</h:form>
+			<h:form>
+				<t:panelGrid align="center">
+					<h:dataTable value="#{clienteHandler.allCadastroCliente}" styleClass="EDIT_BACKGROUND" id="tabelaDados" rows="5" headerClass="cabecalho"  rowClasses="linha1,linha2" var="cc" rendered="#{not empty clienteHandler.allCadastroCliente}">
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="ID"/>
+							</f:facet>
+							<h:outputText value="#{cc.id}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome"/>
+							</f:facet>
+							<h:outputText value="#{cc.nomeCliente}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="CNPJ"/>
+							</f:facet>
+							<h:outputText value="#{cc.cnpj}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Endereço"/>
+							</f:facet>
+							<h:outputText value="#{cc.endereco}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Telefone"/>
+							</f:facet>
+							<h:outputText value="#{cc.telefone}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="E-mail"/>
+							</f:facet>
+							<h:outputText value="#{cc.email}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Alteração"/>
+							</f:facet>
+							<h:commandLink actionListener="#{clienteHandler.carregaCadastroCliente}">
+								<h:outputText value="Alterar"/>
+								<f:param id="editId" name="id" value="#{cc.id}"/>
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Exclusão"/>
+							</f:facet>
+							<h:commandLink actionListener="#{clienteHandler.excluirCadastroCliente}">
+								<h:outputText value="Excluir"/>
+								<f:param id="idEdit" name="id" value="#{cc.id}"/>
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+						<t:dataScroller for="tabelaDados" paginator="true" paginatorMaxPages="7"></t:dataScroller>
+				</t:panelGrid>
+			</h:form>
+		</f:view>
+       </ui:define>
+</ui:composition>

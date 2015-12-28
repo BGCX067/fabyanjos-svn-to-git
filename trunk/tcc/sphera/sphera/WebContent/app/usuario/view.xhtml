@@ -1,0 +1,37 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<h:panelGrid columns="2" columnClasses="col-aling-lef" width="100%">
+		<h:outputText id="lblNome" value="#{i18n.lblNome}" />
+		<h:outputText id="name" value="#{usuarioController.usuario.nome}" />
+		<h:outputText id="lblLogin" value="#{i18n.lblLogin}" />
+		<h:outputText id="login" value="#{usuarioController.usuario.login}" />
+		<h:outputText
+			rendered="#{not empty usuarioController.usuario.departamento}"
+			value="#{i18n.lblDept}" id="lblDept" />
+		<h:outputText
+			rendered="#{not empty usuarioController.usuario.departamento}"
+			id="dept" value="#{usuarioController.usuario.departamento}" />
+		<h:outputText rendered="#{not empty usuarioController.usuario.cargo}"
+			id="lblCargo" value="#{i18n.lblCargo}" />
+		<h:outputText rendered="#{not empty usuarioController.usuario.cargo}"
+			value="#{usuarioController.usuario.cargo}" id="cargo" />
+		<h:outputText value="#{i18n.lblEmail}" />
+		<h:outputText value="#{usuarioController.usuario.email}" id="email" />
+		<h:outputText
+			rendered="#{not empty usuarioController.usuario.telefone}"
+			value="#{i18n.lblTel}" id="lblTel" />
+		<h:outputText
+			rendered="#{not empty usuarioController.usuario.telefone}"
+			value="#{usuarioController.usuario.telefone}" id="tel" />
+	</h:panelGrid>
+
+
+
+</ui:composition>

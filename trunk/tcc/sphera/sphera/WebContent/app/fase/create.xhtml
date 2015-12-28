@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:sphera="http://org.sphera/mytags"
+	  xmlns:risb="http://java.sun.com/jsf/ri/sandbox">
+		
+<ui:composition>
+
+	<a4j:region>
+		<h:form id="fase" > 
+		<h:inputHidden value="#{faseController.fase.id}"/>
+			<h:panelGrid width="70%" columns="3" columnClasses="colunOne,colunTwo,colunThree" >
+				<h:outputLabel value="#{i18n.lblNome}" for="nome"/>
+				<h:inputText required="true" id="nome" value="#{faseController.fase.nome}" label="#{i18n.lblNome}"/>
+				<sphera:message validID="nome"/>
+				
+				<h:outputLabel for="elm1" value="#{i18n.lblDescr}"/>
+				<h:inputTextarea value="#{faseController.fase.descricao}" id="elm1" cols="50" rows="10" label="#{i18n.lblDescr}"/>
+				<sphera:message validID="elm1"/>
+				
+				<h:outputLabel value="#{i18n.lblIniPlanejado}" for="dtIni"/>
+				<rich:calendar value="#{faseController.fase.inicioPlanejado}" id="dtIni" datePattern="#{i18n.datePattern}" locale="#{i18n.locale}" mode="client" popup="true" required="true" showApplyButton="false" />
+				<sphera:message validID="dtIni"/>
+				
+				<h:outputLabel value="#{i18n.lblFimPlanejado}" for="dtFim"/>
+				<rich:calendar value="#{faseController.fase.fimPlanejado}" id="dtFim" datePattern="#{i18n.datePattern}" locale="#{i18n.locale}" mode="client" popup="true" required="true" showApplyButton="false" />
+				<sphera:message validID="dtFim"/>
+				
+				<h:outputLabel value="#{i18n.lblCustoPlanejadoRH}" for="custoRH"/>
+				<h:inputText label="#{i18n.lblCustoPlanejadoRH}" value="#{faseController.fase.custoPlanejadoRH}" id="custoRH" required="true">
+					
+				</h:inputText>
+				<sphera:message validID="custoRH"/>
+				
+				<h:outputLabel value="#{i18n.lblCustoPlanejadoMaterial}" for="custoMat"/>
+				<h:inputText label="#{i18n.lblCustoPlanejadoMaterial}" value="#{faseController.fase.custoPlanejadoMaterial}" id="custoMat">
+					
+				</h:inputText>
+				
+				<sphera:message validID="custoMat"/>
+				
+				<h:outputLabel for="proj" value="#{i18n.lblProj}"/>
+				<h:panelGroup layout="block">
+					<h:inputText id="proj" value="#{faseController.fase.projeto}" label="#{i18n.lblProj}">
+						<f:converter converterId="projConvert"/>
+					</h:inputText>
+					<rich:suggestionbox id="suggestResp"
+					 height="150" width="150" for="proj" border="1" shadowDepth="4" shadowOpacity="4"
+					 cellpadding="2" var="result" suggestionAction="#{projetoController.autocomplete}"
+					 nothingLabel="#{i18n.noUsersFound}" fetchValue="#{result.nome} (#{result.cliente.nome})"
+					 >
+					<h:column>
+						<h:outputText value="#{result.nome}"/>
+					</h:column>	
+					<h:column>
+						<h:outputText value="#{result.responsavel.nome}"/>
+					</h:column>
+					<h:column>
+						<h:outputText value="#{result.cliente.nome}"/>
+					</h:column>
+					</rich:suggestionbox>
+				</h:panelGroup>
+				<sphera:message validID="proj"/>
+				
+			</h:panelGrid>
+			<h:outputText id="filelbl" value="#{i18n.lblPhaseFile}"/>
+			<rich:fileUpload fileUploadListener="#{faseController.listener}"
+			id="upload" acceptedTypes="#{configBean.acceptedFiles}"	stopControlLabel="#{i18n.uploadStopControlLabel}"
+			transferErrorLabel="#{i18n.uploadTransferErrorLabel}" clearControlLabel="#{i18n.uploadClearControlLabel}"
+			cancelEntryControlLabel="#{i18n.uploadCancelEntryControlLabel}" addControlLabel="#{i18n.uploadAddControlLabel}"
+			stopEntryControlLabel="#{i18n.uploadStopControlLabel}" sizeErrorLabel="#{i18n.ulploadSizeErrorLabel}"
+			progressLabel="#{i18n.uploadProgressLabel}" maxFilesQuantity="5" doneLabel="#{i18n.uploadDoneLabel}"
+			clearAllControlLabel="#{i18n.uploadClearAllControlLabel}">
+			
+			</rich:fileUpload>
+			<h:panelGrid columns="2">
+				<a4j:commandButton onclick="showLoad()" oncomplete="hideLoad()" action="#{faseController.save}" value="#{i18n.save}" reRender="tabPanel,message"/>
+				<a4j:commandButton onclick="showLoad()" oncomplete="hideLoad()" action="#{faseController.goToList}" immediate="true" value="#{i18n.cancel}" reRender="tabPanel,message"/>
+			</h:panelGrid>
+		</h:form>
+		</a4j:region>
+</ui:composition>
+</html>

@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<ui:composition>
+	
+		<h:form id="list">
+			<rich:dataTable rows="15" value="#{projetoController.projetos}" var="projeto" id="projList">
+				<rich:column sortBy="#{projeto.nome}" filterBy="#{projeto.nome}" filterEvent="onkeyup" >
+					<f:facet name="header">
+						<h:outputText value="#{i18n.lblNome}"/>
+					</f:facet>
+					<h:commandLink id="comLinkSeeProj" onclick="showLoad();" value="#{projeto.nome}" action="#{projetoController.view}">
+						<f:setPropertyActionListener value="#{projeto}" target="#{projetoController.projeto}" />
+					</h:commandLink>
+				</rich:column>
+				<rich:column sortBy="#{projeto.inicioPlanejado}">
+					<f:facet name="header">
+						<h:outputText value="#{i18n.lblIniPlanejado}"/>
+					</f:facet>
+					<h:outputText value="#{projeto.inicioPlanejado}">
+						<f:convertDateTime pattern="#{i18n.datePattern}"/>
+					</h:outputText> 
+				</rich:column>
+				<rich:column sortBy="#{projeto.fimPlanejado}">
+					<f:facet name="header">
+						<h:outputText value="#{i18n.lblFimPlanejado}"/>
+					</f:facet>
+					<h:outputText value="#{projeto.fimPlanejado}">
+						<f:convertDateTime pattern="#{i18n.datePattern}"/>
+					</h:outputText> 
+				</rich:column>
+				<rich:column sortBy="#{projeto.custoPlanejadoTotal}" filterBy="#{projeto.custoPlanejadoTotal}" filterEvent="onkeyup">
+					<f:facet name="header">
+						<h:outputText value="#{i18n.lblCustoTotalPlan}"/>
+					</f:facet>
+					<h:outputText id="custoTotal" value="#{projeto.custoPlanejadoTotal}">
+						<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+					</h:outputText> 
+					<rich:toolTip followMouse="true">
+						<h:panelGrid columns="2" columnClasses="col-aling-lef,col-aling-lef">
+							<h:outputText styleClass="bold" id="custRH" value="#{i18n.lblCustoPlanejadoRH}"/>
+							<h:outputText id="cusrRHValue" value="#{projeto.custoPlanejadoRH}">
+							<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+							</h:outputText>
+							<h:outputText styleClass="bold" id="custMat" value="#{i18n.lblCustoPlanejadoMaterial}"/>
+							<h:outputText id="custMatValue" value="#{projeto.custoPlanejadoMaterial}">
+							<f:convertNumber locale="#{i18n.locale}" type="currency" currencySymbol="#{i18n.moeda}" maxFractionDigits="#{i18n.digitoFrac}"/>
+							</h:outputText>
+						</h:panelGrid>
+					</rich:toolTip>
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="#{i18n.lblStatus}"/>
+					</f:facet>
+					<h:outputText value="#{i18n['aguardando']}" rendered="#{projeto.status eq 'AGUARDANDO'}"/>
+					<h:outputText value="#{i18n['concluido']}" rendered="#{projeto.status eq 'CONCLUIDO'}"/>
+					<h:outputText value="#{i18n['inprogress']}" rendered="#{projeto.status eq 'INPROGRESS'}"/>
+				</rich:column>
+				<rich:column sortBy="#{projeto.cliente.nome}" filterBy="#{projeto.cliente.nome}" filterEvent="onkeyup">
+					<f:facet name="header">
+						<h:outputText value="#{i18n.client}"/>
+					</f:facet>
+						<h:outputText value="#{projeto.cliente.nome}">
+						</h:outputText> 
+				</rich:column>
+				<rich:column filterBy="#{projeto.responsavel.nome}" filterEvent="onkeyup" sortBy="#{projeto.responsavel.nome}">
+					<f:facet name="header">
+						<h:outputText value="#{i18n.lblResponsavel}"/>
+					</f:facet>
+					<h:outputText value="#{projeto.responsavel.nome}">
+					</h:outputText> 
+				</rich:column>
+				<rich:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n.actions}"/>
+						</f:facet>
+						<h:panelGrid columns="3">
+							<a4j:commandLink onclick="showLoad()" oncomplete="hideLoad()" actionListener="#{projetoController.edit}" value="#{i18n.edit}" reRender="tabPanel">
+								<f:setPropertyActionListener value="#{projeto}" target="#{projetoController.projeto}" />
+							</a4j:commandLink>
+							<h:outputLink value="#" onclick="#{rich:component('confirm')}.show()" >
+								<h:outputText value="#{i18n.delete}" id="del"/>
+							</h:outputLink>
+							
+							<h:commandLink onclick="showLoad();" action="#{projetoController.view}" value="#{i18n.view}" >
+								<f:setPropertyActionListener value="#{projeto}" target="#{projetoController.projeto}" />
+							</h:commandLink>
+							<rich:modalPanel id="confirm" width="150" height="80">
+								<f:facet name="header">
+									<h:outputText value="#{i18n.confirmDelete}"/>
+								</f:facet>
+								<table align="center">
+									<tr>
+										<td align="center">
+											<a4j:commandButton onclick="showLoad();" oncomplete="hideLoad();" value="#{i18n.confirmOk}" id="doAct" action="#{projetoController.delete}" reRender="projList,message">
+												<rich:componentControl attachTo="doAct" for="confirm" operation="hide" event="onclick">
+												</rich:componentControl>
+												<f:setPropertyActionListener value="#{projeto}" target="#{projetoController.projeto}" />
+											</a4j:commandButton>
+										</td>
+										<td align="center">
+											<input type="button" value="#{i18n.confirmCancel}" onclick="#{rich:component('confirm')}.hide()"/>
+										</td>
+									</tr>
+								</table>
+							</rich:modalPanel>
+						</h:panelGrid>
+					</rich:column>
+					<f:facet name="footer">
+						<rich:datascroller onclick="showLoad()" oncomplete="hideLoad();" for="projList" renderIfSinglePage="false" id="scrol" immediate="true" maxPages="3" reRender="tabPanel"/>
+					</f:facet>
+			</rich:dataTable>
+		</h:form>
+</ui:composition>
+</html>

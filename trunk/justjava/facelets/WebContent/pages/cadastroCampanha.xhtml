@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/pages/template/common.xhtml">
+      <ui:define name="pageHeader">Cadastro de Campanha</ui:define>
+      <ui:define name="body">
+      	<f:view>
+			<h:form>
+				<t:panelGrid align="center" columns="2">
+					<h:outputText value="Nome Campanha:" styleClass="titulo_campos"/> <h:inputText value="#{campanhaHandler.cadastroCampanha.nomeCampanha}" required="true"/>
+					<h:outputText value="Observação:" styleClass="titulo_campos"/> <h:inputTextarea value="#{campanhaHandler.cadastroCampanha.observacaoCampanha}" required="true"/>
+					<!-- Mostra as msgs de erro-->
+					<h:messages></h:messages>
+					<h:commandButton styleClass="BUTTON_imagem" value="Gravar" action="#{campanhaHandler.salvar}"/>
+				</t:panelGrid>
+			</h:form>
+			<h:form>
+				<t:panelGrid align="center">
+					<h:dataTable value="#{campanhaHandler.allCadastroCampanha}" id="tabelaDados" rows="5" var="ccam" rendered="#{not empty campanhaHandler.allCadastroCampanha}"
+					styleClass="EDIT_BACKGROUND" headerClass="cabecalho"  rowClasses="linha1,linha2" >
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="ID"/>
+							</f:facet>
+							<h:outputText value="#{ccam.id}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome Campanha"/>
+							</f:facet>
+							<h:outputText value="#{ccam.nomeCampanha}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Observação"/>
+							</f:facet>
+							<h:outputText value="#{ccam.observacaoCampanha}"/>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Alteração"/>
+							</f:facet>
+							<h:commandLink actionListener="#{campanhaHandler.carregaCadastroCampanha}">
+								<h:outputText value="Alterar"/>
+								<f:param id="editId" name="id" value="#{ccam.id}"/>
+							</h:commandLink>
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Exclusão"/>
+							</f:facet>
+							<h:commandLink actionListener="#{campanhaHandler.excluirCadastroCliente}">
+								<h:outputText value="Excluir"/>
+								<f:param id="Idedit" name="id" value="#{ccam.id}"/>
+							</h:commandLink>
+						</h:column>
+					</h:dataTable>
+						<t:dataScroller for="tabelaDados" paginator="true" paginatorMaxPages="7"></t:dataScroller>
+				</t:panelGrid>
+			</h:form>
+		</f:view>
+      </ui:define>
+</ui:composition>
